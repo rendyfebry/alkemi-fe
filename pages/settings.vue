@@ -4,7 +4,7 @@
 			<div class="col">
 				<app-logo/>
 				<h1 class="title">
-					Alkemi
+					Settings
 				</h1>
 				<h2 class="subtitle">
 					Nuxt.js project

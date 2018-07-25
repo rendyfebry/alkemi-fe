@@ -106,6 +106,17 @@ export default {
 					}
 				})
 		},
+		installGoogleSdkScript(d, s, id) {
+			if (d.getElementById(id)) {
+				this.google_ready = true
+				return
+			}
+			const fjs = d.getElementsByTagName(s)[0]
+			const js = d.createElement(s)
+			js.id = id
+			js.src = 'https://apis.google.com/js/platform.js?onload=gapiOnLoadCallback'
+			fjs.parentNode.insertBefore(js, fjs)
+		},
 	},
 	mounted() {
 		window.gapiOnLoadCallback = () => {
@@ -118,18 +129,8 @@ export default {
 			})
 			this.google_ready = true
 		}
-		const installGoogleSdkScript = (d, s, id) => {
-			if (d.getElementById(id)) {
-				this.google_sdk_initialized = true
-				return
-			}
-			let fjs = d.getElementsByTagName(s)[0]
-			let js = d.createElement(s)
-			js.id = id
-			js.src = 'https://apis.google.com/js/platform.js?onload=gapiOnLoadCallback'
-			fjs.parentNode.insertBefore(js, fjs)
-		}
-		installGoogleSdkScript(document, 'script', 'google-jssdk')
+
+		this.installGoogleSdkScript(document, 'script', 'google-jssdk')
 	},
 }
 </script>
