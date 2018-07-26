@@ -1,40 +1,59 @@
 <template>
 	<div class="container">
-		<div class="row">
-			<div class="col col-12 col-md-4 offset-md-4">
-				<div class="card">
-					<div class="card-body">
-					    <h5 class="card-title">Login</h5>
-						<form @submit.prevent="submit">
-							<div v-if="alert" :class="`alert alert-${alert.type}`" role="alert">
-								{{alert.message}}
+		<div class="wrapper">
+			<div class="logo-area text-center p-2 mb-2">
+				<nuxt-link
+					to="/"
+					exact
+					class=""
+				>
+					ALKEMI.IO
+				</nuxt-link>
+			</div>
+			<div class="card borderless">
+				<div class="card-body">
+					<h5 class="card-title">Login</h5>
+					<form @submit.prevent="submit">
+						<div v-if="alert" :class="`alert alert-${alert.type}`" role="alert">
+							{{alert.message}}
+						</div>
+
+						<div class="form-group">
+							<input type="email" name="email" v-model="email" class="form-control" placeholder="Email" />
+						</div>
+
+						<div class="form-group">
+							<input type="password" name="password" v-model="password" class="form-control" placeholder="Password" />
+						</div>
+
+						<div class="form-group">
+							<div class="form-group form-check mb-0">
+								<input type="checkbox" class="form-check-input" id="rememberMe">
+								<label class="form-check-label" for="rememberMe">Remember me</label>
 							</div>
-
-							<div class="form-group">
-								<input type="email" name="email" v-model="email" class="form-control" placeholder="Email" />
-							</div>
-
-							<div class="form-group">
-								<input type="password" name="password" v-model="password" class="form-control" placeholder="Password" />
-							</div>
-
-							<button class="btn btn-primary btn-block" type="submit" :loading="loading" :disabled="loading">
-								Log In
-							</button>
-						</form>
-
-						<hr />
+						</div>
 
 						<button
-							class="btn btn-primary btn-block"
-							v-if="google_ready"
-							@click="google_submit"
-							:loading="google_loading"
-							:disabled="google_loading"
+							class="btn btn-success btn-block borderless"
+							type="submit"
+							:disabled="loading"
 						>
-							Login with google
+							{{ loading ? 'Login...' : 'Login' }}
 						</button>
-					</div>
+					</form>
+
+					<hr />
+
+					<button
+						class="btn btn-primary btn-block borderless"
+						v-if="google_ready"
+						@click="google_submit"
+						:disabled="google_loading"
+						:style="{ background: '#ec5425'}"
+					>
+						<i class="fa fa-google" />
+						{{ google_loading ? 'Continue with google...' : 'Continue with google' }}
+					</button>
 				</div>
 			</div>
 		</div>
@@ -45,6 +64,7 @@
 import { googleClientId } from '~/config'
 
 export default {
+	layout: 'login',
 	data() {
 		return {
 			email: '',
@@ -134,3 +154,20 @@ export default {
 	},
 }
 </script>
+
+<style scoped>
+.wrapper {
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+.logo-area a {
+	color: #fff;
+	font-size: 1.25rem;
+	font-weight: 300;
+}
+
+.borderless {
+	border: 0;
+}
+</style>
