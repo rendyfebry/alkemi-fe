@@ -22,6 +22,7 @@ module.exports = {
       },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' },
       { rel: 'stylesheet', href: '/main.css' },
+      { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.2.0/css/all.css' },
     ],
   },
   /*
@@ -50,5 +51,5 @@ module.exports = {
   router: {
     middleware: ['auth'],
   },
-  modules: ['@nuxtjs/font-awesome'],
+  // modules: ['@nuxtjs/font-awesome'],
 }
