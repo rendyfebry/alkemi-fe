@@ -50,4 +50,5 @@ module.exports = {
   router: {
     middleware: ['auth'],
   },
+  modules: ['@nuxtjs/font-awesome'],
 }
