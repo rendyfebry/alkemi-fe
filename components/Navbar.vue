@@ -2,11 +2,15 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-main">
 		<div class="container">
 			<template v-if="isUserLoggedIn">
-			<nuxt-link to="/pages" class="navbar-brand">ALKEMI</nuxt-link>
+			<nuxt-link to="/pages" class="navbar-brand">
+				<i class="fa fa-hourglass-half" /> ALKEMI.IO
+			</nuxt-link>
 			</template>
 
 			<template v-else>
-			<nuxt-link to="/" exact class="navbar-brand">ALKEMI</nuxt-link>
+			<nuxt-link to="/" exact class="navbar-brand">
+				<i class="fa fa-hourglass-half" /> ALKEMI.IO
+			</nuxt-link>
 			</template>
 
 			<button

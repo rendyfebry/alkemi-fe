@@ -7,7 +7,7 @@
 					exact
 					class=""
 				>
-					ALKEMI.IO
+					<i class="fa fa-hourglass-half" /> ALKEMI.IO
 				</nuxt-link>
 			</div>
 			<div class="card borderless">
