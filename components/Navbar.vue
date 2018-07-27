@@ -87,7 +87,7 @@ export default {
 
 <style scoped>
 .navbar-main {
-	background-color: #2f80ed;
+	background-color: #3a95ee !important;
 	/* background: linear-gradient(315deg, #56ccf2, #3a95ee 73%, #2f80ed); */
 }
 
