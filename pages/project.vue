@@ -1,10 +1,12 @@
 <template>
 	<section class="container">
 		<div class="row">
-			<div class="col col-sm-12 col-lg-4" v-for="page in pages" v-bind:key="page.id">
-				<div class="card">
+			<div class="col col-12 col-lg-4" v-for="page in pages" v-bind:key="page.id">
+				<div class="card mb-3">
 					<div class="img-wrapper">
-						<img class="card-img-top" src="https://vuejs.org/images/logo.png" alt="Card image cap">
+						<nuxt-link to="/editor">
+							<img class="card-img-top" src="~/assets/preview.png" alt="Card image cap">
+						</nuxt-link>
 					</div>
 					<div class="card-body">
 						<h5 class="card-title">{{ page.name }}</h5>

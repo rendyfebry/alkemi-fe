@@ -7,7 +7,7 @@
 		<div class="sidebar pl-5 pr-4">
 			<div class="logo-area text-center p-2 mb-2">
 				<nuxt-link
-					to="/pages"
+					to="/project"
 					exact
 					class=""
 				>
