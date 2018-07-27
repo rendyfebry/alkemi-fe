@@ -51,7 +51,7 @@
 						:disabled="google_loading"
 						:style="{ background: '#ec5425'}"
 					>
-						<i class="fa fa-google" />
+						<i class="fab fa-google" />
 						{{ google_loading ? 'Continue with google...' : 'Continue with google' }}
 					</button>
 				</div>
