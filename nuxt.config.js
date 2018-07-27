@@ -51,5 +51,17 @@ module.exports = {
   router: {
     middleware: ['auth'],
   },
-  // modules: ['@nuxtjs/font-awesome'],
+  modules: ['@nuxtjs/proxy'],
+  proxy: {
+    '/api': {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+      pathRewrite: {
+        '^/api': '',
+      },
+      headers: {
+        'X-Api-Key': '22fbf8e3-d7ad-478f-92e5-a3f769eece00',
+      },
+    },
+  },
 }
