@@ -4,48 +4,58 @@
             <EditorTemplate />
 		</div>
 
-		<div class="sidebar p-4">
+		<div class="sidebar pl-5 pr-4">
+			<div class="logo-area text-center p-2 mb-2">
+				<nuxt-link
+					to="/pages"
+					exact
+					class=""
+				>
+					<i class="fa fa-hourglass-half" /> ALKEMI.IO
+				</nuxt-link>
+			</div>
+
             <h3 class="section-title">Section 1</h3>
             <div class="row no-gutters">
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-paragraph" />
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-heading" />
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-image" />
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-quote-right" />
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-newspaper" />
                     </div>
                 </div>
             </div>
             <h3 class="section-title">Section 2</h3>
-            <div class="row">
-                <div class="col col-12 col-lg-6">
+            <div class="row no-gutters">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-paragraph" />
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-heading" />
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6">
+                <div class="col col-12 col-lg-4">
                     <div class="element-box mb-3 mr-3">
                         <i class="fas fa-image" />
                     </div>
@@ -73,17 +83,25 @@ export default {
 }
 
 .sidebar {
-	flex: 0 0 20rem;
+	flex: 1;
+	max-width: 20rem;
+}
+
+.logo-area a {
+	color: #fff;
+	font-size: 1.25rem;
+	font-weight: 300;
 }
 
 .element-box {
-	border: 1px solid #f0f0f0;
-	height: 110px;
+	background-color: #ffffff;
+	border-radius: 0.25rem;
+	height: 4.25rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 .element-box:hover {
@@ -92,7 +110,7 @@ export default {
 }
 
 .main {
-	flex: 1;
+	flex: 4;
 	background-color: #ffffff;
 	box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19) !important;
 	overflow-y: auto;
