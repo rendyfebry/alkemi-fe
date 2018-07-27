@@ -6,4 +6,7 @@ export default {
     login: data => axios.post('/api/auth/login', data),
     google: data => axios.post('/api/auth/google', data),
   },
+  project: {
+    all: () => axios.get('/api/project'),
+  },
 }
