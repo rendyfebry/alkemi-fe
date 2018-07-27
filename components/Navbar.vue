@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-main">
 		<div class="container">
 			<template v-if="isUserLoggedIn">
-			<nuxt-link to="/pages" class="navbar-brand">
+			<nuxt-link to="/project" class="navbar-brand">
 				<i class="fa fa-hourglass-half" /> ALKEMI.IO
 			</nuxt-link>
 			</template>
@@ -89,6 +89,10 @@ export default {
 .navbar-main {
 	background-color: #3a95ee !important;
 	/* background: linear-gradient(315deg, #56ccf2, #3a95ee 73%, #2f80ed); */
+}
+
+.navbar-brand {
+	font-weight: 300;
 }
 
 .dropdown-menu {
