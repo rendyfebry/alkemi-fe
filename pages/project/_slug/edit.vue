@@ -23,6 +23,7 @@
                         :data-el="item.initial"
                         :data-elIcon="item.icon"
                         :data-elName="item.name"
+						:data-type="item.type"
                     >
                         <div class="item">
                             <div class="icon">
@@ -41,6 +42,104 @@ import EditorTemplate from '~/components/EditorTemplate.vue'
 import Tree from '~/components/Tree'
 import { ProjectTemplate, elementOptions } from '~/static/dummy'
 
+//return an array of objects according to key, value, or key and value matching
+function getObjects(obj, key, val) {
+	var objects = []
+	for (var i in obj) {
+		if (!obj.hasOwnProperty(i)) continue
+		if (typeof obj[i] == 'object') {
+			objects = objects.concat(getObjects(obj[i], key, val))
+		} else if ((i == key && obj[i] == val) || (i == key && val == '')) {
+			//if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
+			//
+			objects.push(obj)
+		} else if (obj[i] == val && key == '') {
+			//only add if the object is not already in the array
+			if (objects.lastIndexOf(obj) == -1) {
+				objects.push(obj)
+			}
+		}
+	}
+	return objects
+}
+
+//return an array of values that match on a certain key
+function getValues(obj, key) {
+	var objects = []
+	for (var i in obj) {
+		if (!obj.hasOwnProperty(i)) continue
+		if (typeof obj[i] == 'object') {
+			objects = objects.concat(getValues(obj[i], key))
+		} else if (i == key) {
+			objects.push(obj[i])
+		}
+	}
+	return objects
+}
+
+//return an array of keys that match on a certain value
+function getKeys(obj, val) {
+	var objects = []
+	for (var i in obj) {
+		if (!obj.hasOwnProperty(i)) continue
+		if (typeof obj[i] == 'object') {
+			objects = objects.concat(getKeys(obj[i], val))
+		} else if (obj[i] == val) {
+			objects.push(i)
+		}
+	}
+	return objects
+}
+
+const dummyData = {
+	children: [
+		{
+			type: 'container',
+			class: 'container',
+			id: 'container-1',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'row-1',
+					children: [
+						{
+							type: 'col',
+							class: 'col dropzone',
+							id: 'col-1',
+							children: [
+								{
+									type: 'paragraph',
+									id: 'paragraph-1',
+									content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+													Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+													when an unknown printer took a galley of type and scrambled it to make
+													a type specimen book.`,
+								},
+							],
+						},
+						{
+							type: 'col',
+							class: 'col dropzone',
+							id: 'col-2',
+							children: [
+								{
+									type: 'paragraph',
+									id: 'paragraph-2',
+									content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+													Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+													when an unknown printer took a galley of type and scrambled it to make
+													a type specimen book.`,
+								},
+							],
+						},
+					],
+				},
+			],
+		},
+	],
+}
+
 export default {
 	layout: 'editor',
 	components: {
@@ -50,6 +149,7 @@ export default {
 	data() {
 		return {
 			tree: ProjectTemplate,
+			// tree: dummyData,
 			elementOptions,
 		}
 	},
@@ -78,47 +178,74 @@ export default {
 			$('.editor-row').removeClass('editor-row-hovered')
 		},
 
-		handleSortableStop(e, ui, elementList) {
-			// identified item has class el-list
-			const uiItemDraggable = ui.item.hasClass('el-list')
+		handleSortableStop(e, ui) {
+			// console.log('ui', ui)
 
-			// check item if has class el-list
-			if (uiItemDraggable) {
-				// remove el-list from item
-				ui.item.removeClass('el-list')
+			const element = ui.item.get(0)
+			const elementType = element && element.dataset ? element.dataset.type : ''
 
-				// get random string
+			console.log('elementType', elementType)
+
+			const parent = element.parentElement
+			const parentId = parent ? parent.id : ''
+
+			const treeCopy = JSON.parse(JSON.stringify(this.tree))
+
+			console.log('parent', parentId)
+
+			const parentObj = getObjects(treeCopy, 'id', parentId)
+
+			if (parentObj && parentObj[0]) {
+				const selectedElement = this.elementOptions.find(el => el.type === elementType)
+
 				const randomString = this.generateRandomString()
 
-				// set data set element
-				const dataSet = ui.item.get(0).dataset.el
-				const dataSetParent = ui.item.get(0)
+				const newElement = {
+					type: selectedElement.type,
+					content: selectedElement.content,
+					options: selectedElement.options,
+					id: `${selectedElement.type}_${randomString}`,
+				}
 
-				// set id to this element
-				dataSetParent.setAttribute('id', randomString)
+				parentObj[0].children.push(newElement)
 
-				// get element html by parent id
-				const elem = elementList.map(item => {
-					const newHtml = $(item.html).attr('data-id', randomString)
-
-					return item.initial === dataSet ? newHtml : ''
-				})
-
-				// clear css widht and height
-				ui.item.css({
-					width: '100%',
-					height: 'auto',
-				})
-
-				// add class editor element as selector
-				ui.item.addClass('editor-element')
-
-				// append to dropzone
-				ui.item.html(elem)
+				this.tree = treeCopy
 			}
 
-			// remove helper move
-			$('.element-content--helper').remove()
+			// delete element from JQUERYUI
+			ui.item.remove()
+
+			// // identified item has class el-list
+			// const uiItemDraggable = ui.item.hasClass('el-list')
+			// // check item if has class el-list
+			// if (uiItemDraggable) {
+			// 	// remove el-list from item
+			// 	ui.item.removeClass('el-list')
+			// 	// get random string
+			// 	const randomString = this.generateRandomString()
+			// 	// set data set element
+			// 	const dataSet = ui.item.get(0).dataset.el
+			// 	const dataSetParent = ui.item.get(0)
+			// 	// set id to this element
+			// 	dataSetParent.setAttribute('id', randomString)
+			// 	// get element html by parent id
+			// 	const elem = elementList.map(item => {
+			// 		const newHtml = $(item.html).attr('data-id', randomString)
+			// 		return item.initial === dataSet ? newHtml : ''
+			// 	})
+			// 	// clear css widht and height
+			// 	ui.item.css({
+			// 		width: '100%',
+			// 		height: 'auto',
+			// 	})
+			// 	// add class editor element as selector
+			// 	ui.item.addClass('editor-element')
+			// 	// append to dropzone
+			// 	ui.item.html(elem)
+			// }
+
+			// // remove helper move
+			// $('.element-content--helper').remove()
 		},
 
 		initDraggableElement() {
@@ -134,7 +261,7 @@ export default {
 				.draggable(options)
 		},
 
-		initSortable(elementList) {
+		initSortable() {
 			const options = {
 				connectWith: '.dropzone',
 				revert: false,
@@ -158,7 +285,7 @@ export default {
 					return helperHTML
 				},
 				start: (e, ui) => this.handleSortableStart(),
-				stop: (e, ui) => this.handleSortableStop(e, ui, elementList),
+				stop: (e, ui) => this.handleSortableStop(e, ui),
 			}
 
 			const elList = $('.dropzone')
@@ -214,7 +341,7 @@ export default {
 			this.initDraggableElement()
 
 			// init sortable
-			this.initSortable(this.elementOptions)
+			this.initSortable()
 
 			// handle hover element
 			this.initElementHover()

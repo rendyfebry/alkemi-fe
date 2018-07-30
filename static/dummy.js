@@ -3,6 +3,10 @@ export const elementOptions = [
     name: 'Paragraph',
     initial: 'elParagraph',
     icon: 'fas fa-paragraph',
+    type: 'paragraph',
+    content: `This is a template for a simple marketing or informational website.
+						It includes a large callout called a jumbotron and three supporting pieces of content.
+						Use it as a starting point to create something more unique.`,
     html: `
 				<div class="element-body"
 					data-type="elParagrah"
@@ -34,6 +38,11 @@ export const elementOptions = [
     name: 'Headline',
     initial: 'elHeading',
     icon: 'fas fa-heading',
+    type: 'heading',
+    options: {
+      level: 1,
+    },
+    content: 'Hello, World!',
     html: `
 				<div class="element-body" data-type="elHeading" data-edit="text-headline">
 					<div class="element-action">
@@ -56,6 +65,10 @@ export const elementOptions = [
     name: 'Image',
     initial: 'elImage',
     icon: 'fas fa-image',
+    type: 'image',
+    options: {
+      src: 'https://app.managix.id/static/img/image-placeholder.jpg',
+    },
     html: `
 				<div class="element-body" data-type="elImage" data-edit="image" data-reference="square">
 					<div class="element-action">
@@ -152,10 +165,12 @@ export const ProjectTemplate = {
     {
       type: 'section',
       class: 'jumbotron',
+      id: 'section-2',
       children: [
         {
           type: 'section',
           class: 'container dropzone',
+          id: 'section-2-1',
           children: [
             {
               type: 'heading',
@@ -178,11 +193,13 @@ export const ProjectTemplate = {
     },
     {
       type: 'section',
-      class: 'pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center  dropzone',
+      class: 'pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center',
+      id: 'section-3',
       children: [
         {
           type: 'col',
-          class: 'col',
+          class: 'col dropzone',
+          id: 'col-3-1',
           children: [
             {
               type: 'heading',
@@ -371,20 +388,22 @@ export const ProjectTemplate = {
               children: [
                 {
                   type: 'col',
-                  class: 'col-12 col-md',
+                  class: 'col-12 col-md dropzone',
                   children: [
                     {
                       type: 'image',
                       class: 'mb-2',
-                      src: 'https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg',
-                      width: 24,
-                      height: 24,
+                      options: {
+                        src: 'https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg',
+                        width: 24,
+                        height: 24,
+                      },
                     },
                   ],
                 },
                 {
                   type: 'col',
-                  class: 'col-16 col-md',
+                  class: 'col-16 col-md dropzone',
                   children: [
                     {
                       type: 'heading',
@@ -469,7 +488,7 @@ export const ProjectTemplate = {
                 },
                 {
                   type: 'col',
-                  class: 'col-16 col-md',
+                  class: 'col-16 col-md dropzone',
                   children: [
                     {
                       type: 'heading',
@@ -532,7 +551,7 @@ export const ProjectTemplate = {
                 },
                 {
                   type: 'col',
-                  class: 'col-16 col-md',
+                  class: 'col-16 col-md dropzone',
                   children: [
                     {
                       type: 'heading',
