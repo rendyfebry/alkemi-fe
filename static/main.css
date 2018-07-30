@@ -3,3 +3,82 @@ body {
   color: #4f545e;
   background-color: #fafafa;
 }
+
+/* ------------ */
+
+.drop-placeholder {
+  width: 100%;
+  background-color: rgba(0, 105, 255, 0.6);
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent,
+    transparent 12px,
+    rgba(0, 0, 0, 0.1) 0,
+    rgba(0, 0, 0, 0.1) 24px
+  );
+  border: 1px dashed #0069ff;
+  height: 2rem;
+}
+
+.element-body {
+  position: relative;
+  border: 2px solid transparent;
+}
+
+.element-body.hovered {
+  border-color: #ffb417;
+}
+
+.element-content {
+}
+
+.element-action {
+  display: none;
+  top: 0;
+  right: 0;
+  background-color: #ffb417;
+  position: absolute;
+  z-index: 999;
+}
+
+.element-body.hovered .element-action {
+  display: flex;
+}
+
+.element-action .item {
+  padding: 0.2rem 0.3rem 0.1rem 0.3rem;
+  width: 2rem;
+  height: auto;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.element-action .item:hover {
+  background-color: #e29f13;
+}
+
+.element-item:hover {
+  background-color: rgba(177, 186, 204, 0.8);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
+.element-item {
+  background-color: rgba(177, 186, 204, 0.5);
+  border-radius: 0.2rem;
+  padding: 1rem;
+  cursor: grab;
+  cursor: -webkit-grab;
+  border: 0px dashed;
+}
+
+.element-icon {
+  font-size: 1.5rem;
+}
+
+.element-text {
+  font-size: 0.75rem;
+}

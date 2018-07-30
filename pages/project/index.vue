@@ -1,16 +1,19 @@
 <template>
-	<section class="container">
-		<div class="row">
-			<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
-				<div class="card mb-3">
-					<div class="img-wrapper">
-						<nuxt-link :to="`/project/${project.slug}/edit`">
-							<img class="card-img-top" src="~/assets/preview.png" alt="Card image cap">
-						</nuxt-link>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">{{ project.name }}</h5>
-						<p class="card-text">{{ project.date }}</p>
+	<section class="container pt-4">
+		<div class="wrapper p-3">
+			<h2 class="mb-4">Projects</h2>
+			<div class="row">
+				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+					<div class="mb-3">
+						<div class="img-wrapper">
+							<nuxt-link :to="`/project/${project.slug}/edit`">
+								<img class="card-img-top" src="~/assets/preview.png" alt="Card image cap">
+							</nuxt-link>
+						</div>
+						<div class="p-2">
+							<h5 class="card-title">{{ project.name }}</h5>
+							<p class="card-text">{{ project.date }}</p>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -32,8 +35,15 @@ export default {
 </script>
 
 <style scoped>
+.wrapper {
+	background-color: #ffffff;
+	/* border: 1px solid #eeeeee; */
+	box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1);
+}
+
 .img-wrapper {
 	background-color: rgb(217, 217, 217);
+	border: 1px solid #eeeeee;
 }
 </style>
 

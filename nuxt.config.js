@@ -13,6 +13,8 @@ module.exports = {
       { src: 'https://code.jquery.com/jquery-3.3.1.slim.min.js' },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js' },
       { src: 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js' },
+      { src: '/jquery.min.js' },
+      { src: '/jquery-ui.min.js' },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
