@@ -36,37 +36,76 @@
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container dropzone">
-				<h1 class="display-3">Hello, world!</h1>
-				<p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-				<div data-v-25d20844="" data-el="elParagraph" data-elicon="fas fa-paragraph" data-elname="Paragraph" class="mb-3 mr-3 ui-draggable ui-draggable-handle editor-element" style="width: 100%; height: auto;" id="wolfd"><div class="element-body" data-type="elParagrah" data-edit="text-editor" data-fontsize="16" data-linesize="1" data-color="#212121" data-id="wolfd">
-					<div class="element-action">
-                        <div class="item" data-action="edit">
-                            <i class="fas fa-pencil-alt"></i>
-                        </div>
-                        <div class="item" data-action="delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </div>
-                        <div class="item handle" data-action="move">
-                            <i class="fas fa-arrows-alt"></i>
-                        </div>
-                    </div>
-					<div class="element-content">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and scrambled it to make
-							a type specimen book.
-						</p>
+				<div data-el="elHeading" data-elicon="fas fa-heading" data-elname="Headline" class="mb-3 mr-3 ui-draggable ui-draggable-handle editor-element" style="width: 100%; height: auto;" id="zjzcg">
+					<div class="element-body" data-type="elHeading" data-edit="text-headline" data-id="zjzcg">
+						<div class="element-action">
+							<div class="item" data-action="edit">
+								<i class="fas fa-pencil-alt"></i>
+							</div>
+							<div class="item" data-action="delete">
+								<i class="fas fa-trash-alt"></i>
+							</div>
+							<div class="item handle" data-action="move">
+								<i class="fas fa-arrows-alt"></i>
+							</div>
+						</div>
+						<div class="element-content">
+							<h1 class="display-3">Hello, world!</h1>
+						</div>
 					</div>
-				</div></div>
+				</div>
+				<div data-el="elParagraph" data-elicon="fas fa-paragraph" data-elname="Paragraph" class="mb-3 mr-3 ui-draggable ui-draggable-handle editor-element" style="width: 100%; height: auto;" id="wolfd">
+					<div class="element-body" data-type="elParagrah" data-edit="text-editor" data-fontsize="16" data-linesize="1" data-color="#212121" data-id="wolfd">
+						<div class="element-action">
+							<div class="item" data-action="edit">
+								<i class="fas fa-pencil-alt"></i>
+							</div>
+							<div class="item" data-action="delete">
+								<i class="fas fa-trash-alt"></i>
+							</div>
+							<div class="item handle" data-action="move">
+								<i class="fas fa-arrows-alt"></i>
+							</div>
+						</div>
+						<div class="element-content">
+							<p>
+								This is a template for a simple marketing or informational website.
+								It includes a large callout called a jumbotron and three supporting pieces of content.
+								Use it as a starting point to create something more unique.
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 
 		<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center  dropzone">
-			<h1 class="display-4">Pricing</h1>
+
+			<div data-el="elHeading" data-elicon="fas fa-heading" data-elname="Headline" class="mb-3 mr-3 ui-draggable ui-draggable-handle editor-element" style="width: 100%; height: auto;" id="zjzch">
+				<div class="element-body" data-type="elHeading" data-edit="text-headline" data-id="zjzch">
+					<div class="element-action">
+						<div class="item" data-action="edit">
+							<i class="fas fa-pencil-alt"></i>
+						</div>
+						<div class="item" data-action="delete">
+							<i class="fas fa-trash-alt"></i>
+						</div>
+						<div class="item handle" data-action="move">
+							<i class="fas fa-arrows-alt"></i>
+						</div>
+					</div>
+					<div class="element-content">
+						<h1 class="display-4">Pricing</h1>
+					</div>
+				</div>
+			</div>
+
 			<p class="lead">
 				Quickly build an effective pricing table for your potential customers with this Bootstrap example.
 				It's built with default Bootstrap components and utilities with little customization.
 			</p>
+
+
 		</div>
 
 		<div class="container">

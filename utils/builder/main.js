@@ -10,6 +10,21 @@ const generateRandomString = () => {
   return rndString
 }
 
+// handle on start sortable
+const handleSortableStart = () => {
+  // hide editor section action
+  $('.editor-section__action').removeClass('active')
+
+  // hide hovered section
+  $('.editor-section').removeClass('editor-section-hovered')
+
+  // hide editor row action
+  $('.editor-row__action').removeClass('active')
+
+  // hide hovered row
+  $('.editor-row').removeClass('editor-row-hovered')
+}
+
 // handle on stop sortable
 const handleSortableStop = (e, ui, elementList) => {
   // identified item has class el-list
@@ -24,9 +39,8 @@ const handleSortableStop = (e, ui, elementList) => {
     const randomString = generateRandomString()
 
     // set data set element
-    let dataSet = ui.item.get(0).dataset.el
-    let dataSetParent = ui.item.get(0)
-    let columnName = ui.item.get(0).parentNode.dataset.column
+    const dataSet = ui.item.get(0).dataset.el
+    const dataSetParent = ui.item.get(0)
 
     // set id to this element
     dataSetParent.setAttribute('id', randomString)
@@ -37,10 +51,6 @@ const handleSortableStop = (e, ui, elementList) => {
 
       return item.initial === dataSet ? newHtml : ''
     })
-
-    console.log(ui.item)
-
-    // const listSection = anding.Agestate.landingPage.listSections
 
     // clear css widht and height
     ui.item.css({
@@ -54,35 +64,26 @@ const handleSortableStop = (e, ui, elementList) => {
     // append to dropzone
     ui.item.html(elem)
   }
+
+  // remove helper move
+  $('.element-content--helper').remove()
 }
 
 Builder.initDraggableElement = () => {
-  const drag = {
+  const options = {
     cursor: 'move',
     helper: 'clone',
     revert: false,
     connectToSortable: '.dropzone',
   }
 
-  const elList = $('body').find('.el-list')
-
-  $(elList).draggable(drag)
+  $('body')
+    .find('.el-list')
+    .draggable(options)
 }
 
-Builder.initSortable = (startHandler, stopHandler) => {
-  const helperHTML = (elementName, elementIcon) =>
-    `<div class="el-list element-list element-content--helper">
-				<div class="element-item">
-					<div class="element-icon">
-						<i class="${elementIcon}"></i>
-					</div>
-					<div class="element-text">
-						${elementName}
-					</div>
-				</div>
-			</div>`
-
-  const sorts = {
+Builder.initSortable = elementList => {
+  const options = {
     connectWith: '.dropzone',
     revert: false,
     placeholder: 'drop-placeholder',
@@ -93,26 +94,29 @@ Builder.initSortable = (startHandler, stopHandler) => {
       const elementName = ui.get(0).dataset.elname
       const elementIcon = ui.get(0).dataset.elicon
 
-      return helperHTML(elementName, elementIcon)
+      const helperHTML = `<div class="el-list helper text-center">
+														<div class="item">
+															<div class="icon">
+																<i class="${elementIcon}"></i>
+															</div>
+															${elementName}
+														</div>
+													</div>`
+
+      return helperHTML
     },
-    // start: (e, ui) => {
-    //   console.log('e', e)
-    //   console.log('ui', ui)
-    // },
-    // stop: (e, ui) => handleSortableStop(e, ui, elementList),
-    // }
-    start: (e, ui) => startHandler(e, ui),
-    stop: (e, ui) => stopHandler(e, ui),
+    start: (e, ui) => handleSortableStart(),
+    stop: (e, ui) => handleSortableStop(e, ui, elementList),
   }
 
-  const elList = $('body').find('.dropzone')
+  const elList = $('.dropzone')
 
-  $(elList).sortable(sorts)
+  $(elList).sortable(options)
 }
 
 Builder.initElementHover = () => {
   $('body')
-    .on('mouseenter', '.element-body', e => {
+    .on('mouseenter', '.editor-element', e => {
       const target = e.currentTarget
       // get target id
       const id = $(target).attr('id')
@@ -125,13 +129,13 @@ Builder.initElementHover = () => {
       if (!overlay) {
         // active hover if not have class isEditing
         if (!isEditing) {
-          $('.element-body').removeClass('hovered')
+          $('.editor-element').removeClass('editor-element-hovered')
 
           // add border hovered to editor element
-          $(`#${id}`).addClass('hovered')
+          $('#' + id).addClass('editor-element-hovered')
 
           // initialize element body by data-id
-          const elementBody = $('body').find(`.element-body[data-id="${id}"]`)
+          const elementBody = $('body').find('.element-body[data-id="' + id + '"]')
 
           // remove editor element action
           $('.element-action').removeClass('active')
@@ -143,9 +147,9 @@ Builder.initElementHover = () => {
         }
       }
     })
-    .on('mouseleave', '.element-body', () => {
+    .on('mouseleave', '.editor-element', () => {
       // remove border hovered from editor element
-      $('.element-body').removeClass('hovered')
+      $('.editor-element').removeClass('editor-element-hovered')
 
       // remove editor element action
       $('.element-action').removeClass('active')
