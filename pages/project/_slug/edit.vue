@@ -1,11 +1,11 @@
 <template>
 	<div class="wrapper pt-4">
 		<div class="main">
-            <EditorTemplate />
+			<tree :tree-data="tree"></tree>
 		</div>
 
 		<div class="sidebar pl-5 pr-4">
-			<!-- <div class="logo-area text-center p-2 mb-2">
+			<div class="logo-area text-center p-2 mb-2">
 				<nuxt-link
 					to="/project"
 					exact
@@ -13,12 +13,12 @@
 				>
 					<i class="fa fa-hourglass-half" /> ALKEMI.IO
 				</nuxt-link>
-			</div> -->
+			</div>
 
             <h3 class="section-title">Section 1</h3>
             <div class="row no-gutters">
 
-                <div class="col col-12 col-lg-4" v-for="(item, index) in elementList" :key="index">
+                <div class="col col-12 col-lg-4" v-for="(item, index) in elementOptions" :key="index">
                     <div class="el-list mb-3 mr-3"
                         :data-el="item.initial"
                         :data-elIcon="item.icon"
@@ -39,98 +39,19 @@
 <script>
 import EditorTemplate from '~/components/EditorTemplate.vue'
 import Builder from '~/utils/builder/main.js'
-
-// this all object element list
-const elementList = () => {
-	const el = [
-		{
-			name: 'Paragraph',
-			initial: 'elParagraph',
-			icon: 'fas fa-paragraph',
-			html: `
-				<div class="element-body"
-					data-type="elParagrah"
-					data-edit="text-editor"
-					data-fontsize="16"
-					data-linesize="1"
-					data-color="#212121">
-					<div class="element-action">
-						<div class="item" data-action="edit">
-							<i class="fas fa-pencil-alt"></i>
-						</div>
-						<div class="item" data-action="delete">
-							<i class="fas fa-trash-alt"></i>
-						</div>
-						<div class="item handle" data-action="move">
-							<i class="fas fa-arrows-alt"></i>
-						</div>
-					</div>
-					<div class="element-content">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and scrambled it to make
-							a type specimen book.
-						</p>
-					</div>
-				</div>`,
-		},
-		{
-			name: 'Headline',
-			initial: 'elHeading',
-			icon: 'fas fa-heading',
-			html: `
-				<div class="element-body" data-type="elHeading" data-edit="text-headline">
-					<div class="element-action">
-						<div class="item" data-action="edit">
-							<i class="fas fa-pencil-alt"></i>
-						</div>
-						<div class="item" data-action="delete">
-							<i class="fas fa-trash-alt"></i>
-						</div>
-						<div class="item handle" data-action="move">
-							<i class="fas fa-arrows-alt"></i>
-						</div>
-					</div>
-					<div class="element-content">
-						<h1>Input your headline in this area</h1>
-					</div>
-				</div>`,
-		},
-		{
-			name: 'Image',
-			initial: 'elImage',
-			icon: 'fas fa-image',
-			html: `
-				<div class="element-body" data-type="elImage" data-edit="image" data-reference="square">
-					<div class="element-action">
-						<div class="item" data-action="edit">
-							<i class="fas fa-pencil-alt"></i>
-						</div>
-						<div class="item" data-action="delete">
-							<i class="fas fa-trash-alt"></i>
-						</div>
-						<div class="item handle" data-action="move">
-							<i class="fas fa-arrows-alt"></i>
-						</div>
-					</div>
-					<div class="element-content">
-						<img src="https://app.managix.id/static/img/image-placeholder.jpg" class="img-fluid img-responsive img-reference-square img-editing"/>
-					</div>
-				</div>`,
-		},
-	]
-
-	return el
-}
+import Tree from '~/components/Tree'
+import { ProjectTemplate, elementOptions } from '~/static/dummy'
 
 export default {
 	layout: 'editor',
 	components: {
 		EditorTemplate,
+		Tree,
 	},
 	data() {
 		return {
-			elementList: elementList(),
+			tree: ProjectTemplate,
+			elementOptions,
 		}
 	},
 	methods: {
@@ -139,7 +60,7 @@ export default {
 			Builder.initDraggableElement()
 
 			// init sortable
-			Builder.initSortable(this.elementList)
+			Builder.initSortable(this.elementOptions)
 
 			// handle hover element
 			Builder.initElementHover()
