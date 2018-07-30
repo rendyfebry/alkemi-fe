@@ -1,27 +1,29 @@
 <template>
-    <h1 v-if="node.type === 'heading-1'" :class="node.class">
-        {{ node.content }}
-    </h1>
+    <div v-if="node.type === 'heading'">
+        <h1 v-if="node.options.level === 1" :class="node.class">
+            {{ node.content }}
+        </h1>
+        <h2 v-else-if="node.options.level === 2" :class="node.class">
+            {{ node.content }}
+        </h2>
 
-    <h2 v-else-if="node.type === 'heading-2'" :class="node.class">
-        {{ node.content }}
-    </h2>
+        <h3 v-else-if="node.options.level === 3" :class="node.class">
+            {{ node.content }}
+        </h3>
 
-    <h3 v-else-if="node.type === 'heading-3'" :class="node.class">
-        {{ node.content }}
-    </h3>
+        <h4 v-else-if="node.options.level === 4" :class="node.class">
+            {{ node.content }}
+        </h4>
 
-    <h4 v-else-if="node.type === 'heading-4'" :class="node.class">
-        {{ node.content }}
-    </h4>
+        <h5 v-else-if="node.options.level === 5" :class="node.class">
+            {{ node.content }}
+        </h5>
 
-    <h5 v-else-if="node.type === 'heading-5'" :class="node.class">
-        {{ node.content }}
-    </h5>
+        <h6 v-else-if="node.options.level === 6" :class="node.class">
+            {{ node.content }}
+        </h6>
+    </div>
 
-    <h6 v-else-if="node.type === 'heading-6'" :class="node.class">
-        {{ node.content }}
-    </h6>
 
     <p
 		v-else-if="node.type === 'paragraph'"

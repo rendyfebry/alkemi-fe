@@ -48,7 +48,7 @@ export const elementOptions = [
 						</div>
 					</div>
 					<div class="element-content">
-						<h1>Input your headline in this area</h1>
+						<h1>Hello, world!</h1>
 					</div>
 				</div>`,
   },
@@ -158,9 +158,12 @@ export const ProjectTemplate = {
           class: 'container dropzone',
           children: [
             {
-              type: 'heading-1',
+              type: 'heading',
               class: 'display-3',
               content: 'Hello, world!',
+              options: {
+                level: 1,
+              },
             },
             {
               type: 'paragraph',
@@ -182,8 +185,11 @@ export const ProjectTemplate = {
           class: 'col',
           children: [
             {
-              type: 'heading-1',
+              type: 'heading',
               content: 'Pricing',
+              options: {
+                level: 1,
+              },
             },
             {
               type: 'paragraph',
@@ -210,9 +216,12 @@ export const ProjectTemplate = {
                   class: 'card-header',
                   children: [
                     {
-                      type: 'heading-4',
+                      type: 'heading',
                       class: 'my-0 font-weight-normal',
                       content: 'Free',
+                      options: {
+                        level: 4,
+                      },
                     },
                   ],
                 },
@@ -257,9 +266,12 @@ export const ProjectTemplate = {
                   class: 'card-header',
                   children: [
                     {
-                      type: 'heading-4',
+                      type: 'heading',
                       class: 'my-0 font-weight-normal',
                       content: 'Rp 129.000 /mo',
+                      options: {
+                        level: 4,
+                      },
                     },
                   ],
                 },
@@ -304,9 +316,12 @@ export const ProjectTemplate = {
                   class: 'card-header',
                   children: [
                     {
-                      type: 'heading-4',
+                      type: 'heading',
                       class: 'my-0 font-weight-normal',
                       content: 'Rp 179.000 /mo',
+                      options: {
+                        level: 4,
+                      },
                     },
                   ],
                 },
@@ -372,8 +387,11 @@ export const ProjectTemplate = {
                   class: 'col-16 col-md',
                   children: [
                     {
-                      type: 'heading-5',
+                      type: 'heading',
                       content: 'Features',
+                      options: {
+                        level: 5,
+                      },
                     },
                     {
                       type: 'ul',
@@ -430,7 +448,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Another one',
                             },
                           ],
@@ -442,7 +459,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Last time',
                             },
                           ],
@@ -456,8 +472,11 @@ export const ProjectTemplate = {
                   class: 'col-16 col-md',
                   children: [
                     {
-                      type: 'heading-5',
+                      type: 'heading',
                       content: 'Resources',
+                      options: {
+                        level: 5,
+                      },
                     },
                     {
                       type: 'ul',
@@ -470,7 +489,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Resource',
                             },
                           ],
@@ -482,7 +500,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Resource name',
                             },
                           ],
@@ -494,7 +511,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Another resource',
                             },
                           ],
@@ -506,7 +522,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Final resource',
                             },
                           ],
@@ -520,8 +535,11 @@ export const ProjectTemplate = {
                   class: 'col-16 col-md',
                   children: [
                     {
-                      type: 'heading-5',
+                      type: 'heading',
                       content: 'About',
+                      options: {
+                        level: 5,
+                      },
                     },
                     {
                       type: 'ul',
@@ -534,7 +552,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Team',
                             },
                           ],
@@ -546,7 +563,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Locations',
                             },
                           ],
@@ -558,7 +574,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Privacy',
                             },
                           ],
@@ -570,7 +585,6 @@ export const ProjectTemplate = {
                               type: 'link',
                               href: '#',
                               class: 'text-muted',
-
                               content: 'Terms',
                             },
                           ],
