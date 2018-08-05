@@ -25,6 +25,16 @@ body {
   height: 2rem;
 }
 
+.builder-element {
+  border: 1px solid transparent;
+  padding: 0.2rem;
+  position: relative;
+}
+
+.builder-element:hover {
+  border-color: #00e5ff;
+}
+
 .editor-element {
   border: 2px solid transparent;
 }
@@ -44,28 +54,29 @@ body {
   display: none;
   top: 0;
   left: 0;
-  background-color: #ffb417;
+  background-color: #00e5ff;
   position: absolute;
   z-index: 999;
 }
 
-.element-action.active {
+.builder-element:hover .element-action {
   display: flex;
 }
 
 .element-action .item {
-  padding: 0.2rem 0.3rem 0.1rem 0.3rem;
   width: 2rem;
-  height: auto;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   color: #fff;
   font-weight: 600;
-  text-align: center;
   font-size: 1rem;
 }
 
 .element-action .item:hover {
-  background-color: #e29f13;
+  background-color: #06d1e8;
 }
 
 .element-item:hover {
