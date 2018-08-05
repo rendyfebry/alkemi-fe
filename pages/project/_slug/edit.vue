@@ -22,7 +22,6 @@
 					<div class="el-list mb-3 mr-3"
 						:data-el="item.initial"
 						:data-elIcon="item.icon"
-						:data-elName="item.name"
 						:data-type="item.type"
 					>
 						<div class="item">
@@ -39,7 +38,7 @@
 
 <script>
 import Tree from '~/components/Tree'
-import { elementOptions } from '~/static/dummy'
+import { ELEMENT_OPTIONS } from '~/assets/data/static'
 
 function findObject(o, key, id) {
 	//Early return
@@ -69,7 +68,7 @@ export default {
 	},
 	data() {
 		return {
-			elementOptions,
+			elementOptions: ELEMENT_OPTIONS,
 		}
 	},
 	computed: {
@@ -125,7 +124,7 @@ export default {
 				const dataSet = dropedItem.dataset
 				const elementType = dropedItem.dataset ? dropedItem.dataset.type : ''
 
-				const selectedElement = elementOptions.find(i => i.type === elementType)
+				const selectedElement = this.elementOptions.find(i => i.type === elementType)
 
 				if (!selectedElement || !selectedElement.template) {
 					console.log('selectedElement is not found on element options')
@@ -133,7 +132,7 @@ export default {
 				}
 
 				const newElement = JSON.parse(JSON.stringify(selectedElement.template))
-				newElement.id = this.generateRandomString()
+				newElement.id = `${elementType}_${this.generateRandomString()}`
 				newElement.parentId = droppedItemParentId
 
 				const newParent = findObject(treeCopy, 'id', droppedItemParentId)
@@ -224,7 +223,7 @@ export default {
 				handle: '.handle',
 				scroll: false,
 				helper: (e, ui) => {
-					const elementName = ui.get(0).dataset.elname
+					const elementType = ui.get(0).dataset.type
 					const elementIcon = ui.get(0).dataset.elicon
 
 					const helperHTML = `<div class="el-list helper text-center">
@@ -232,7 +231,7 @@ export default {
 												<div class="icon">
 													<i class="${elementIcon}"></i>
 												</div>
-												${elementName}
+												${elementType}
 											</div>
 										</div>`
 
