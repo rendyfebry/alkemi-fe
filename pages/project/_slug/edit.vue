@@ -15,143 +15,67 @@
 				</nuxt-link>
 			</div>
 
-            <h3 class="section-title">Section 1</h3>
-            <div class="row no-gutters">
+			<h3 class="section-title">Section 1</h3>
+			<div class="row no-gutters">
 
-                <div class="col col-12 col-lg-4" v-for="(item, index) in elementOptions" :key="index">
-                    <div class="el-list mb-3 mr-3"
-                        :data-el="item.initial"
-                        :data-elIcon="item.icon"
-                        :data-elName="item.name"
+				<div class="col col-12 col-lg-4" v-for="(item, index) in elementOptions" :key="index">
+					<div class="el-list mb-3 mr-3"
+						:data-el="item.initial"
+						:data-elIcon="item.icon"
+						:data-elName="item.name"
 						:data-type="item.type"
-                    >
-                        <div class="item">
-                            <div class="icon">
-                                <i :class="item.icon"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+					>
+						<div class="item">
+							<div class="icon">
+								<i :class="item.icon"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
-import EditorTemplate from '~/components/EditorTemplate.vue'
 import Tree from '~/components/Tree'
-import { ProjectTemplate, elementOptions } from '~/static/dummy'
+import { elementOptions } from '~/static/dummy'
 
-//return an array of objects according to key, value, or key and value matching
-function getObjects(obj, key, val) {
-	var objects = []
-	for (var i in obj) {
-		if (!obj.hasOwnProperty(i)) continue
-		if (typeof obj[i] == 'object') {
-			objects = objects.concat(getObjects(obj[i], key, val))
-		} else if ((i == key && obj[i] == val) || (i == key && val == '')) {
-			//if key matches and value matches or if key matches and value is not passed (eliminating the case where key matches but passed value does not)
-			//
-			objects.push(obj)
-		} else if (obj[i] == val && key == '') {
-			//only add if the object is not already in the array
-			if (objects.lastIndexOf(obj) == -1) {
-				objects.push(obj)
+function findObject(o, key, id) {
+	//Early return
+	if (o[key] === id) {
+		return o
+	}
+
+	let result
+	let p
+
+	for (p in o) {
+		if (o.hasOwnProperty(p) && typeof o[p] === 'object') {
+			result = findObject(o[p], key, id)
+			if (result) {
+				return result
 			}
 		}
 	}
-	return objects
-}
 
-//return an array of values that match on a certain key
-function getValues(obj, key) {
-	var objects = []
-	for (var i in obj) {
-		if (!obj.hasOwnProperty(i)) continue
-		if (typeof obj[i] == 'object') {
-			objects = objects.concat(getValues(obj[i], key))
-		} else if (i == key) {
-			objects.push(obj[i])
-		}
-	}
-	return objects
-}
-
-//return an array of keys that match on a certain value
-function getKeys(obj, val) {
-	var objects = []
-	for (var i in obj) {
-		if (!obj.hasOwnProperty(i)) continue
-		if (typeof obj[i] == 'object') {
-			objects = objects.concat(getKeys(obj[i], val))
-		} else if (obj[i] == val) {
-			objects.push(i)
-		}
-	}
-	return objects
-}
-
-const dummyData = {
-	children: [
-		{
-			type: 'container',
-			class: 'container',
-			id: 'container-1',
-			children: [
-				{
-					type: 'row',
-					class: 'row',
-					id: 'row-1',
-					children: [
-						{
-							type: 'col',
-							class: 'col dropzone',
-							id: 'col-1',
-							children: [
-								{
-									type: 'paragraph',
-									id: 'paragraph-1',
-									content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-													Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-													when an unknown printer took a galley of type and scrambled it to make
-													a type specimen book.`,
-								},
-							],
-						},
-						{
-							type: 'col',
-							class: 'col dropzone',
-							id: 'col-2',
-							children: [
-								{
-									type: 'paragraph',
-									id: 'paragraph-2',
-									content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-													Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-													when an unknown printer took a galley of type and scrambled it to make
-													a type specimen book.`,
-								},
-							],
-						},
-					],
-				},
-			],
-		},
-	],
+	return result
 }
 
 export default {
 	layout: 'editor',
 	components: {
-		EditorTemplate,
 		Tree,
 	},
 	data() {
 		return {
-			tree: ProjectTemplate,
-			// tree: dummyData,
 			elementOptions,
 		}
+	},
+	computed: {
+		tree() {
+			return this.$store.state.project.editorTree || {}
+		},
 	},
 	methods: {
 		generateRandomString() {
@@ -179,73 +103,103 @@ export default {
 		},
 
 		handleSortableStop(e, ui) {
-			// console.log('ui', ui)
+			const dropedItem = ui.item.get(0)
+			const dropedItemId = dropedItem ? dropedItem.id : ''
 
-			const element = ui.item.get(0)
-			const elementType = element && element.dataset ? element.dataset.type : ''
+			const droppedItemParentId = dropedItem.parentElement ? dropedItem.parentElement.id : ''
+			console.log('droppedItemParentId', droppedItemParentId)
 
-			console.log('elementType', elementType)
-
-			const parent = element.parentElement
-			const parentId = parent ? parent.id : ''
-
-			const treeCopy = JSON.parse(JSON.stringify(this.tree))
-
-			console.log('parent', parentId)
-
-			const parentObj = getObjects(treeCopy, 'id', parentId)
-
-			if (parentObj && parentObj[0]) {
-				const selectedElement = this.elementOptions.find(el => el.type === elementType)
-
-				const randomString = this.generateRandomString()
-
-				const newElement = {
-					type: selectedElement.type,
-					content: selectedElement.content,
-					options: selectedElement.options,
-					id: `${selectedElement.type}_${randomString}`,
-				}
-
-				parentObj[0].children.push(newElement)
-
-				this.tree = treeCopy
+			if(!droppedItemParentId) {
+				console.log('droppedItemParentId is not found')
+				return false
 			}
 
-			// delete element from JQUERYUI
+			// deep copy the tree data to cut reference
+			const treeCopy = JSON.parse(JSON.stringify(this.tree))
+			console.log('treeCopy', treeCopy)
+
+			// New item doesn't have id
+			if (!dropedItemId) {
+				console.log('baru')
+
+				const dataSet = dropedItem.dataset
+				const elementType = dropedItem.dataset ? dropedItem.dataset.type : ''
+
+				const selectedElement = elementOptions.find(i => i.type === elementType)
+
+				if (!selectedElement || !selectedElement.template) {
+					console.log('selectedElement is not found on element options')
+					return false
+				}
+
+				const newElement = JSON.parse(JSON.stringify(selectedElement.template))
+				newElement.id = this.generateRandomString()
+				newElement.parentId = droppedItemParentId
+
+				const newParent = findObject(treeCopy, 'id', droppedItemParentId)
+				console.log('newParent', newParent)
+
+
+				if (!newParent) {
+					console.log('new parent is not found')
+					return false
+				}
+
+				newParent.children.push(newElement)
+
+			} else {
+				console.log('lama')
+
+				e.preventDefault()
+
+				const existingElement = findObject(treeCopy, 'id', dropedItemId)
+				console.log('existingElement', existingElement)
+
+				if (!existingElement || !existingElement.parentId) {
+					console.log('existingElement not found')
+					return false
+				}
+
+				const oldParent = findObject(treeCopy, 'id', existingElement.parentId)
+				console.log('oldParent', oldParent)
+
+				if (!oldParent) {
+					console.log('Old parent is not found')
+					return false
+				}
+
+				if (existingElement.parentId !== droppedItemParentId) {
+					existingElement.parentId = droppedItemParentId
+
+					// remove element from old parent
+					const remainingChild = oldParent.children.filter(
+						i => i.id !== existingElement.id,
+					)
+
+					oldParent.children = remainingChild
+
+					const newParent = findObject(treeCopy, 'id', droppedItemParentId)
+					console.log('newParent', newParent)
+
+
+					if (!newParent) {
+						console.log('new parent is not found')
+						return false
+					}
+
+					newParent.children.push(existingElement)
+				}
+			}
+
+			// Remove item from JQUERY UI
 			ui.item.remove()
 
-			// // identified item has class el-list
-			// const uiItemDraggable = ui.item.hasClass('el-list')
-			// // check item if has class el-list
-			// if (uiItemDraggable) {
-			// 	// remove el-list from item
-			// 	ui.item.removeClass('el-list')
-			// 	// get random string
-			// 	const randomString = this.generateRandomString()
-			// 	// set data set element
-			// 	const dataSet = ui.item.get(0).dataset.el
-			// 	const dataSetParent = ui.item.get(0)
-			// 	// set id to this element
-			// 	dataSetParent.setAttribute('id', randomString)
-			// 	// get element html by parent id
-			// 	const elem = elementList.map(item => {
-			// 		const newHtml = $(item.html).attr('data-id', randomString)
-			// 		return item.initial === dataSet ? newHtml : ''
-			// 	})
-			// 	// clear css widht and height
-			// 	ui.item.css({
-			// 		width: '100%',
-			// 		height: 'auto',
-			// 	})
-			// 	// add class editor element as selector
-			// 	ui.item.addClass('editor-element')
-			// 	// append to dropzone
-			// 	ui.item.html(elem)
-			// }
+			// remove helper move
+			$('.element-content--helper').remove()
 
-			// // remove helper move
-			// $('.element-content--helper').remove()
+			console.log('treeCopy', treeCopy)
+
+			this.$store.commit('project/setEditorTree', treeCopy)
 		},
 
 		initDraggableElement() {
@@ -274,13 +228,13 @@ export default {
 					const elementIcon = ui.get(0).dataset.elicon
 
 					const helperHTML = `<div class="el-list helper text-center">
-														<div class="item">
-															<div class="icon">
-																<i class="${elementIcon}"></i>
-															</div>
-															${elementName}
-														</div>
-													</div>`
+											<div class="item">
+												<div class="icon">
+													<i class="${elementIcon}"></i>
+												</div>
+												${elementName}
+											</div>
+										</div>`
 
 					return helperHTML
 				},
