@@ -12,51 +12,51 @@ body {
 }
 
 .drop-placeholder {
-  width: 100%;
-  background-color: rgba(0, 105, 255, 0.6);
-  background-image: repeating-linear-gradient(
-    135deg,
-    transparent,
-    transparent 12px,
-    rgba(0, 0, 0, 0.1) 0,
-    rgba(0, 0, 0, 0.1) 24px
-  );
-  border: 1px dashed #0069ff;
-  height: 2rem;
+	width: 100%;
+	background-color: rgba(0, 105, 255, 0.6);
+	background-image: repeating-linear-gradient(
+		135deg,
+		transparent,
+		transparent 12px,
+		rgba(0, 0, 0, 0.1) 0,
+		rgba(0, 0, 0, 0.1) 24px
+	);
+	border: 1px dashed #0069ff;
+	height: 2rem;
 }
 
 .builder-element {
-  border: 1px solid transparent;
-  padding: 0.2rem;
-  position: relative;
+	border: 1px solid transparent;
+	/* padding: 0.2rem; */
+	position: relative;
 }
 
 .builder-element:hover {
-  border-color: #00e5ff;
+	border-color: #00e5ff;
 }
 
 .editor-element {
-  border: 2px solid transparent;
+	border: 2px solid transparent;
 }
 
 .editor-element-hovered {
-  border-color: #ffb417;
+	border-color: #ffb417;
 }
 
 .element-body {
-  position: relative;
+	position: relative;
 }
 
 .element-content {
 }
 
 .element-action {
-  display: none;
-  top: 0;
-  left: 0;
-  background-color: #00e5ff;
-  position: absolute;
-  z-index: 999;
+	display: none;
+	top: 0;
+	left: 0;
+	background-color: #00e5ff;
+	position: absolute;
+	z-index: 999;
 }
 
 .builder-element:hover .element-action {
@@ -99,30 +99,35 @@ body {
 }
 
 .element-text {
-  font-size: 0.75rem;
+	font-size: 0.75rem;
 }
 
 .el-list {
-  background-color: #ffffff;
-  border-radius: 0.25rem;
-  height: 4.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+	background-color: #ffffff;
+	border-radius: 0.25rem;
+	height: 4.25rem;
+	min-width: 4.25rem !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
 }
 
 .el-list.helper {
-  width: 5rem !important;
-  height: 5rem !important;
-  opacity: 0.8;
+	width: 5rem !important;
+	height: 5rem !important;
+	opacity: 0.8;
 }
 
 .el-list > i {
-  font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
 .el-item:hover {
-  cursor: pointer;
-  background-color: #f0f0f0;
+	cursor: pointer;
+	background-color: #f0f0f0;
+}
+
+.dropzone {
+	min-height: 2rem;
 }
