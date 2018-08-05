@@ -1,4 +1,4 @@
-export const elementOptions = [
+export const ELEMENT_OPTIONS = [
 	{
 		name: 'Paragraph',
 		initial: 'elParagraph',
@@ -31,6 +31,7 @@ export const elementOptions = [
 				</div>`,
 		template: {
 			type: 'paragraph',
+			icon: 'fas fa-paragraph',
 			id: '',
 			class: '',
 			content: `This is a template for a simple marketing or informational website.
@@ -61,6 +62,7 @@ export const elementOptions = [
 				</div>`,
 		template: {
 			type: 'heading',
+			icon: 'fas fa-heading',
 			content: 'Main Title',
 			id: '',
 			options: {
@@ -91,6 +93,7 @@ export const elementOptions = [
 					</div>`,
 		template: {
 			type: 'image',
+			icon: 'fas fa-image',
 			id: '',
 			options: {
 				src: 'https://app.managix.id/static/img/image-placeholder.jpg',
@@ -99,7 +102,65 @@ export const elementOptions = [
 	},
 ]
 
-export const ProjectTemplate = {
+export const DUMMY_PROJECT_TEMPLATE = {
+	children: [
+		{
+			type: 'container',
+			class: 'container',
+			id: 'container_gwcjb',
+			parentId: '',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'row_zevpy',
+					parentId: 'container_gwcjb',
+					children: [
+						{
+							type: 'col',
+							class: 'col dropzone',
+							id: 'col_yggic',
+							parentId: 'row_zevpy',
+							children: [
+								{
+									type: 'heading',
+									icon: 'fas fa-heading',
+									id: 'heading_rujuh',
+									parentId: 'col_yggic',
+									content: `Click Here`,
+									options: {
+										level: 1,
+									},
+								},
+							],
+						},
+						{
+							type: 'col',
+							class: 'col dropzone',
+							id: 'col_wpzeo',
+							parentId: 'row_zevpy',
+							children: [
+								{
+									type: 'paragraph',
+									icon: 'fas fa-paragraph',
+									id: 'paragraph_pbjza',
+									parentId: 'col_wpzeo',
+									content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+											Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+											when an unknown printer took a galley of type and scrambled it to make
+											a type specimen book.`,
+								},
+							],
+						},
+					],
+				},
+			],
+		},
+	],
+}
+
+
+export const PROJECT_TEMPLATE = {
   children: [
 	{
 	  type: 'nav',
