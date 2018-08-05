@@ -56,6 +56,17 @@ function findObject(o, key, id) {
 	return result
 }
 
+function findPosition(arr, id) {
+	for (let i = 0; i < arr.length; i++) {
+		if(arr[i].id === id) {
+			// console.log(arr[i])
+			return i + 1
+		}
+	}
+
+	return 0
+}
+
 export default {
 	layout: 'editor',
 	components: {
@@ -100,8 +111,12 @@ export default {
 			const dropedItem = ui.item.get(0)
 			const dropedItemId = dropedItem ? dropedItem.id : ''
 
+			const previousSibling = ui.item.context.previousElementSibling
+			const previousSiblingId = previousSibling ? previousSibling.id : ''
+			// console.log('previousSiblingId', previousSiblingId)
+
 			const droppedItemParentId = dropedItem.parentElement ? dropedItem.parentElement.id : ''
-			console.log('droppedItemParentId', droppedItemParentId)
+			// console.log('droppedItemParentId', droppedItemParentId)
 
 			if(!droppedItemParentId) {
 				console.log('droppedItemParentId is not found')
@@ -110,7 +125,7 @@ export default {
 
 			// deep copy the tree data to cut reference
 			const treeCopy = JSON.parse(JSON.stringify(this.tree))
-			console.log('treeCopy', treeCopy)
+			// console.log('treeCopy', treeCopy)
 
 			// New item doesn't have id
 			if (!dropedItemId) {
@@ -133,23 +148,22 @@ export default {
 				newElement.parentId = droppedItemParentId
 
 				const newParent = findObject(treeCopy, 'id', droppedItemParentId)
-				console.log('newParent', newParent)
-
+				// console.log('newParent', newParent)
 
 				if (!newParent) {
 					console.log('new parent is not found')
 					return false
 				}
 
-				newParent.children.push(newElement)
-
+				const position = findPosition(newParent.children, previousSiblingId)
+				newParent.children.splice(position, 0, newElement)
 			} else {
 				console.log('lama')
 
 				e.preventDefault()
 
 				const existingElement = findObject(treeCopy, 'id', dropedItemId)
-				console.log('existingElement', existingElement)
+				// console.log('existingElement', existingElement)
 
 				if (!existingElement || !existingElement.parentId) {
 					console.log('existingElement not found')
@@ -157,14 +171,14 @@ export default {
 				}
 
 				const oldParent = findObject(treeCopy, 'id', existingElement.parentId)
-				console.log('oldParent', oldParent)
+				// console.log('oldParent', oldParent)
 
 				if (!oldParent) {
 					console.log('Old parent is not found')
 					return false
 				}
 
-				if (existingElement.parentId !== droppedItemParentId) {
+				// if (existingElement.parentId !== droppedItemParentId) {
 					existingElement.parentId = droppedItemParentId
 
 					// remove element from old parent
@@ -175,16 +189,16 @@ export default {
 					oldParent.children = remainingChild
 
 					const newParent = findObject(treeCopy, 'id', droppedItemParentId)
-					console.log('newParent', newParent)
-
+					// console.log('newParent', newParent)
 
 					if (!newParent) {
 						console.log('new parent is not found')
 						return false
 					}
 
-					newParent.children.push(existingElement)
-				}
+					const position = findPosition(newParent.children, previousSiblingId)
+					newParent.children.splice(position, 0, existingElement)
+				// }
 			}
 
 			// Remove item from JQUERY UI
@@ -193,7 +207,7 @@ export default {
 			// remove helper move
 			$('.element-content--helper').remove()
 
-			console.log('treeCopy', treeCopy)
+			// console.log('treeCopy', treeCopy)
 
 			this.$store.commit('project/setEditorTree', treeCopy)
 		},
