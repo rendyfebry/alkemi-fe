@@ -11,10 +11,18 @@
 			<div class="item handle" data-action="move">
 				<i class="fas fa-arrows-alt"></i>
 			</div>
-			<div class="item" data-action="edit">
+			<div
+				class="item"
+				data-action="edit"
+				@click="handleEdit(node.id)"
+			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
-			<div class="item" data-action="delete">
+			<div
+				class="item"
+				data-action="delete"
+				@click="handleDelete(node.id)"
+			>
 				<i class="fas fa-trash-alt"></i>
 			</div>
 		</div>
@@ -57,10 +65,18 @@
 			<div class="item handle" data-action="move">
 				<i class="fas fa-arrows-alt"></i>
 			</div>
-			<div class="item" data-action="edit">
+			<div
+				class="item"
+				data-action="edit"
+				@click="handleEdit(node.id)"
+			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
-			<div class="item" data-action="delete">
+			<div
+				class="item"
+				data-action="delete"
+				@click="handleDelete(node.id)"
+			>
 				<i class="fas fa-trash-alt"></i>
 			</div>
 		</div>
@@ -81,10 +97,18 @@
 			<div class="item handle" data-action="move">
 				<i class="fas fa-arrows-alt"></i>
 			</div>
-			<div class="item" data-action="edit">
+			<div
+				class="item"
+				data-action="edit"
+				@click="handleEdit(node.id)"
+			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
-			<div class="item" data-action="delete">
+			<div
+				class="item"
+				data-action="delete"
+				@click="handleDelete(node.id)"
+			>
 				<i class="fas fa-trash-alt"></i>
 			</div>
 		</div>
@@ -108,10 +132,18 @@
 			<div class="item handle" data-action="move">
 				<i class="fas fa-arrows-alt"></i>
 			</div>
-			<div class="item" data-action="edit">
+			<div
+				class="item"
+				data-action="edit"
+				@click="handleEdit(node.id)"
+			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
-			<div class="item" data-action="delete">
+			<div
+				class="item"
+				data-action="delete"
+				@click="handleDelete(node.id)"
+			>
 				<i class="fas fa-trash-alt"></i>
 			</div>
 		</div>
@@ -135,10 +167,18 @@
 			<div class="item handle" data-action="move">
 				<i class="fas fa-arrows-alt"></i>
 			</div>
-			<div class="item" data-action="edit">
+			<div
+				class="item"
+				data-action="edit"
+				@click="handleEdit(node.id)"
+			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
-			<div class="item" data-action="delete">
+			<div
+				class="item"
+				data-action="delete"
+				@click="handleDelete(node.id)"
+			>
 				<i class="fas fa-trash-alt"></i>
 			</div>
 		</div>
@@ -193,6 +233,14 @@ export default {
 	props: {
 		node: Object,
 	},
+	methods: {
+		handleEdit(id) {
+			this.$bus.$emit('edit-element', id)
+		},
+		handleDelete(id) {
+			this.$bus.$emit('delete-element', id)
+		},
+	}
 }
 </script>
 

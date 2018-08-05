@@ -300,6 +300,14 @@ export default {
 			// handle hover element
 			this.initElementHover()
 		},
+
+		editElement(id) {
+			console.log(`Element #${id} ask for edit`)
+		},
+
+		deleteElement(id) {
+			console.log(`Element #${id} ask for delete`)
+		},
 	},
 	mounted() {
 		// Code that will run only after
@@ -310,6 +318,10 @@ export default {
 			}.bind(this),
 		)
 	},
+	created() {
+		this.$bus.$on('edit-element', this.editElement)
+		this.$bus.$on('delete-element', this.deleteElement)
+	}
 }
 </script>
 
