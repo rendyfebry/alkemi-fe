@@ -1,37 +1,8 @@
 export const ELEMENT_OPTIONS = [
 	{
-		name: 'Paragraph',
-		initial: 'elParagraph',
-		icon: 'fas fa-paragraph',
 		type: 'paragraph',
-		html: `<div class="element-body"
-					data-type="elParagrah"
-					data-edit="text-editor"
-					data-fontsize="16"
-					data-linesize="1"
-					data-color="#212121">
-					<div class="element-action">
-						<div class="item" data-action="edit">
-							<i class="fas fa-pencil-alt"></i>
-						</div>
-						<div class="item" data-action="delete">
-							<i class="fas fa-trash-alt"></i>
-						</div>
-						<div class="item handle" data-action="move">
-							<i class="fas fa-arrows-alt"></i>
-						</div>
-					</div>
-					<div class="element-content">
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-							Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-							when an unknown printer took a galley of type and scrambled it to make
-							a type specimen book.
-						</p>
-					</div>
-				</div>`,
+		icon: 'fas fa-paragraph',
 		template: {
-			type: 'paragraph',
-			icon: 'fas fa-paragraph',
 			id: '',
 			class: '',
 			content: `This is a template for a simple marketing or informational website.
@@ -40,29 +11,9 @@ export const ELEMENT_OPTIONS = [
 		},
 	},
 	{
-		name: 'Headline',
-		initial: 'elHeading',
-		icon: 'fas fa-heading',
 		type: 'heading',
-		html: `<div class="element-body" data-type="elHeading" data-edit="text-headline">
-					<div class="element-action">
-						<div class="item" data-action="edit">
-							<i class="fas fa-pencil-alt"></i>
-						</div>
-						<div class="item" data-action="delete">
-							<i class="fas fa-trash-alt"></i>
-						</div>
-						<div class="item handle" data-action="move">
-							<i class="fas fa-arrows-alt"></i>
-						</div>
-					</div>
-					<div class="element-content">
-						<h1>Hello, world!</h1>
-					</div>
-				</div>`,
+		icon: 'fas fa-heading',
 		template: {
-			type: 'heading',
-			icon: 'fas fa-heading',
 			content: 'Main Title',
 			id: '',
 			options: {
@@ -71,33 +22,22 @@ export const ELEMENT_OPTIONS = [
 		},
 	},
 	{
-		name: 'Image',
-		initial: 'elImage',
-		icon: 'fas fa-image',
 		type: 'image',
-		html: `<div class="element-body" data-type="elImage" data-edit="image" data-reference="square">
-						<div class="element-action">
-							<div class="item" data-action="edit">
-								<i class="fas fa-pencil-alt"></i>
-							</div>
-							<div class="item" data-action="delete">
-								<i class="fas fa-trash-alt"></i>
-							</div>
-							<div class="item handle" data-action="move">
-								<i class="fas fa-arrows-alt"></i>
-							</div>
-						</div>
-						<div class="element-content">
-							<img src="https://app.managix.id/static/img/image-placeholder.jpg" class="img-fluid img-responsive img-reference-square img-editing"/>
-						</div>
-					</div>`,
+		icon: 'fas fa-image',
 		template: {
-			type: 'image',
-			icon: 'fas fa-image',
 			id: '',
 			options: {
 				src: 'https://app.managix.id/static/img/image-placeholder.jpg',
 			},
+		},
+	},
+	{
+		type: 'button',
+		icon: 'fas fa-image',
+		template: {
+			class: 'btn btn-primary',
+			id: '',
+			content: 'Button',
 		},
 	},
 ]
@@ -122,16 +62,6 @@ export const DUMMY_PROJECT_TEMPLATE = {
 							id: 'col_yggic',
 							parentId: 'row_zevpy',
 							children: [
-								{
-									type: 'heading',
-									icon: 'fas fa-heading',
-									id: 'heading_rujuh',
-									parentId: 'col_yggic',
-									content: `Click Here`,
-									options: {
-										level: 1,
-									},
-								},
 							],
 						},
 						{
@@ -140,16 +70,6 @@ export const DUMMY_PROJECT_TEMPLATE = {
 							id: 'col_wpzeo',
 							parentId: 'row_zevpy',
 							children: [
-								{
-									type: 'paragraph',
-									icon: 'fas fa-paragraph',
-									id: 'paragraph_pbjza',
-									parentId: 'col_wpzeo',
-									content: `Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-											Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-											when an unknown printer took a galley of type and scrambled it to make
-											a type specimen book.`,
-								},
 							],
 						},
 					],

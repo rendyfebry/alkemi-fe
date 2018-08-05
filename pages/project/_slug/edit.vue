@@ -17,14 +17,9 @@
 
 			<h3 class="section-title">Section 1</h3>
 			<div class="row no-gutters">
-
 				<div class="col col-12 col-lg-4" v-for="(item, index) in elementOptions" :key="index">
-					<div class="el-list mb-3 mr-3"
-						:data-el="item.initial"
-						:data-elIcon="item.icon"
-						:data-type="item.type"
-					>
-						<div class="item">
+					<div class="el-list mb-3 mr-3" :data-type="item.type" :data-icon="item.icon">
+						<div class="item text-center">
 							<div class="icon">
 								<i :class="item.icon"></i>
 							</div>
@@ -132,6 +127,8 @@ export default {
 				}
 
 				const newElement = JSON.parse(JSON.stringify(selectedElement.template))
+				newElement.icon = selectedElement.icon
+				newElement.type = selectedElement.type
 				newElement.id = `${elementType}_${this.generateRandomString()}`
 				newElement.parentId = droppedItemParentId
 
@@ -224,7 +221,7 @@ export default {
 				scroll: false,
 				helper: (e, ui) => {
 					const elementType = ui.get(0).dataset.type
-					const elementIcon = ui.get(0).dataset.elicon
+					const elementIcon = ui.get(0).dataset.icon
 
 					const helperHTML = `<div class="el-list helper text-center">
 											<div class="item">
@@ -300,8 +297,8 @@ export default {
 			this.initElementHover()
 		},
 
-		editElement(id) {
-			console.log(`Element #${id} ask for edit`)
+		editElement(id, type) {
+			console.log(`Element ${type} #${id} ask for edit`)
 		},
 
 		deleteElement(id) {

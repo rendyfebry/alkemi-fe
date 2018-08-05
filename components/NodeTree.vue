@@ -3,9 +3,8 @@
 		class="builder-element"
 		v-if="node.type === 'heading'"
 		:id="node.id"
-		:data-elIcon="node.icon"
-		:data-elName="node.name"
 		:data-type="node.type"
+		:data-icon="node.icon"
 	>
 		<div class="element-action">
 			<div class="item handle" data-action="move">
@@ -14,7 +13,7 @@
 			<div
 				class="item"
 				data-action="edit"
-				@click="handleEdit(node.id)"
+				@click="handleEdit(node.id, node.type)"
 			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
@@ -57,9 +56,8 @@
 		class="builder-element"
 		v-else-if="node.type === 'paragraph'"
 		:id="node.id"
-		:data-elIcon="node.icon"
-		:data-elName="node.name"
 		:data-type="node.type"
+		:data-icon="node.icon"
 	>
 		<div class="element-action">
 			<div class="item handle" data-action="move">
@@ -68,7 +66,7 @@
 			<div
 				class="item"
 				data-action="edit"
-				@click="handleEdit(node.id)"
+				@click="handleEdit(node.id, node.type)"
 			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
@@ -89,9 +87,8 @@
 		class="builder-element"
 		v-else-if="node.type === 'image'"
 		:id="node.id"
-		:data-elIcon="node.icon"
-		:data-elName="node.name"
 		:data-type="node.type"
+		:data-icon="node.icon"
 	>
 		<div class="element-action">
 			<div class="item handle" data-action="move">
@@ -100,7 +97,7 @@
 			<div
 				class="item"
 				data-action="edit"
-				@click="handleEdit(node.id)"
+				@click="handleEdit(node.id, node.type)"
 			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
@@ -124,9 +121,8 @@
 		class="builder-element"
 		v-else-if="node.type === 'link'"
 		:id="node.id"
-		:data-elIcon="node.icon"
-		:data-elName="node.name"
 		:data-type="node.type"
+		:data-icon="node.icon"
 	>
 		<div class="element-action">
 			<div class="item handle" data-action="move">
@@ -135,7 +131,7 @@
 			<div
 				class="item"
 				data-action="edit"
-				@click="handleEdit(node.id)"
+				@click="handleEdit(node.id, node.type)"
 			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
@@ -159,9 +155,8 @@
 		class="builder-element"
 		v-else-if="node.type === 'button'"
 		:id="node.id"
-		:data-elIcon="node.icon"
-		:data-elName="node.name"
 		:data-type="node.type"
+		:data-icon="node.icon"
 	>
 		<div class="element-action">
 			<div class="item handle" data-action="move">
@@ -170,7 +165,7 @@
 			<div
 				class="item"
 				data-action="edit"
-				@click="handleEdit(node.id)"
+				@click="handleEdit(node.id, node.type)"
 			>
 				<i class="fas fa-pencil-alt"></i>
 			</div>
@@ -234,8 +229,8 @@ export default {
 		node: Object,
 	},
 	methods: {
-		handleEdit(id) {
-			this.$bus.$emit('edit-element', id)
+		handleEdit(id, type) {
+			this.$bus.$emit('edit-element', id, type)
 		},
 		handleDelete(id) {
 			this.$bus.$emit('delete-element', id)
