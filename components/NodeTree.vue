@@ -1,100 +1,190 @@
 <template>
-    <div v-if="node.type === 'heading' && node.options">
-        <h1 v-if="node.options.level === 1" :class="node.class" :id="node.id">
-            {{ node.content }}
-        </h1>
-        <h2 v-else-if="node.options.level === 2" :class="node.class" :id="node.id">
-            {{ node.content }}
-        </h2>
+	<div
+		class="builder-element"
+		v-if="node.type === 'heading'"
+		:id="node.id"
+		:data-elIcon="node.icon"
+		:data-elName="node.name"
+		:data-type="node.type"
+	>
+		<div class="element-action">
+			<div class="item handle" data-action="move">
+				<i class="fas fa-arrows-alt"></i>
+			</div>
+			<div class="item" data-action="edit">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="item" data-action="delete">
+				<i class="fas fa-trash-alt"></i>
+			</div>
+		</div>
 
-        <h3 v-else-if="node.options.level === 3" :class="node.class" :id="node.id">
-            {{ node.content }}
-        </h3>
+		<h1 v-if="node.options && node.options.level === 1" :class="node.class">
+			{{ node.content }}
+		</h1>
+		<h2 v-else-if="node.options && node.options.level === 2" :class="node.class">
+			{{ node.content }}
+		</h2>
 
-        <h4 v-else-if="node.options.level === 4" :class="node.class" :id="node.id">
-            {{ node.content }}
-        </h4>
+		<h3 v-else-if="node.options && node.options.level === 3" :class="node.class">
+			{{ node.content }}
+		</h3>
 
-        <h5 v-else-if="node.options.level === 5" :class="node.class" :id="node.id">
-            {{ node.content }}
-        </h5>
+		<h4 v-else-if="node.options && node.options.level === 4" :class="node.class">
+			{{ node.content }}
+		</h4>
 
-        <h6 v-else-if="node.options.level === 6" :class="node.class" :id="node.id">
-            {{ node.content }}
-        </h6>
-    </div>
+		<h5 v-else-if="node.options && node.options.level === 5" :class="node.class">
+			{{ node.content }}
+		</h5>
+
+		<h6 v-else-if="node.options && node.options.level === 6" :class="node.class">
+			{{ node.content }}
+		</h6>
+
+	</div>
 
 
-    <p
+	<div
+		class="builder-element"
 		v-else-if="node.type === 'paragraph'"
-		:class="node.class"
-        :id="node.id"
+		:id="node.id"
+		:data-elIcon="node.icon"
+		:data-elName="node.name"
+		:data-type="node.type"
 	>
-        {{ node.content }}
-    </p>
+		<div class="element-action">
+			<div class="item handle" data-action="move">
+				<i class="fas fa-arrows-alt"></i>
+			</div>
+			<div class="item" data-action="edit">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="item" data-action="delete">
+				<i class="fas fa-trash-alt"></i>
+			</div>
+		</div>
+		<p :class="node.class">
+			{{ node.content }}
+		</p>
+	</div>
 
-	<img
+	<div
+		class="builder-element"
 		v-else-if="node.type === 'image'"
-		:class="`img img-fluid ${node.class}`"
-        :id="node.id"
-		:src="node.options ? node.options.src : ''"
-        :width="node.options ? node.options.width : ''"
-        :height="node.options ? node.options.height : ''"
-	/>
+		:id="node.id"
+		:data-elIcon="node.icon"
+		:data-elName="node.name"
+		:data-type="node.type"
+	>
+		<div class="element-action">
+			<div class="item handle" data-action="move">
+				<i class="fas fa-arrows-alt"></i>
+			</div>
+			<div class="item" data-action="edit">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="item" data-action="delete">
+				<i class="fas fa-trash-alt"></i>
+			</div>
+		</div>
+		<img
+			:class="`img img-fluid ${node.class}`"
+			:src="node.options ? node.options.src : ''"
+			:width="node.options ? node.options.width : ''"
+			:height="node.options ? node.options.height : ''"
+		/>
+	</div>
 
-    <a
+	<div
+		class="builder-element"
 		v-else-if="node.type === 'link'"
-		:class="node.class"
-        :href="node.href"
-        :id="node.id"
+		:id="node.id"
+		:data-elIcon="node.icon"
+		:data-elName="node.name"
+		:data-type="node.type"
 	>
-        {{ node.content }}
-    </a>
+		<div class="element-action">
+			<div class="item handle" data-action="move">
+				<i class="fas fa-arrows-alt"></i>
+			</div>
+			<div class="item" data-action="edit">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="item" data-action="delete">
+				<i class="fas fa-trash-alt"></i>
+			</div>
+		</div>
+		<a
+			:class="node.class"
+			:href="node.href"
+		>
+			{{ node.content }}
+		</a>
+	</div>
 
-    <button
+	<div
+		class="builder-element"
 		v-else-if="node.type === 'button'"
-		type="button"
-		:class="`btn ${node.class}`"
-        :id="node.id"
+		:id="node.id"
+		:data-elIcon="node.icon"
+		:data-elName="node.name"
+		:data-type="node.type"
 	>
-        {{ node.content }}
-    </button>
+		<div class="element-action">
+			<div class="item handle" data-action="move">
+				<i class="fas fa-arrows-alt"></i>
+			</div>
+			<div class="item" data-action="edit">
+				<i class="fas fa-pencil-alt"></i>
+			</div>
+			<div class="item" data-action="delete">
+				<i class="fas fa-trash-alt"></i>
+			</div>
+		</div>
+		<button
+			type="button"
+			:class="`btn ${node.class}`"
+		>
+			{{ node.content }}
+		</button>
+	</div>
 
-    <ul v-else-if="node.type === 'ul'" :class="node.class" :id="node.id">
-        <template v-if="node.children && node.children.length">
-            <node v-for="(child, i) in node.children" :node="child" :key="i" />
-        </template>
-    </ul>
+	<ul v-else-if="node.type === 'ul'" :class="node.class" :id="node.id">
+		<template v-if="node.children && node.children.length">
+			<node v-for="(child, i) in node.children" :node="child" :key="i" />
+		</template>
+	</ul>
 
-    <li
+	<li
 		v-else-if="node.type === 'li'"
 		type="li"
 		:class="`${node.class}`"
-        :id="node.id"
+		:id="node.id"
 	>
-        <template v-if="node.children && node.children.length">
-            <node v-for="(child, i) in node.children" :node="child" :key="i" />
-        </template>
+		<template v-if="node.children && node.children.length">
+			<node v-for="(child, i) in node.children" :node="child" :key="i" />
+		</template>
 		<template v-else>
 			{{ node.content }}
 		</template>
-    </li>
+	</li>
 
 
-    <nav v-else-if="node.type === 'nav'" :class="node.class" :id="node.id">
-        <template v-if="node.children && node.children.length">
-            <node v-for="(child, i) in node.children" :node="child" :key="i" />
-        </template>
-    </nav>
+	<nav v-else-if="node.type === 'nav'" :class="node.class" :id="node.id">
+		<template v-if="node.children && node.children.length">
+			<node v-for="(child, i) in node.children" :node="child" :key="i" />
+		</template>
+	</nav>
 
-    <div v-else :class="node.class" :id="node.id">
-        <template v-if="node.children && node.children.length">
-            <node v-for="(child, i) in node.children" :node="child" :key="i" />
-        </template>
+	<div v-else :class="node.class" :id="node.id">
+		<template v-if="node.children && node.children.length">
+			<node v-for="(child, i) in node.children" :node="child" :key="i" />
+		</template>
 		<template v-else>
 			{{ node.content }}
 		</template>
-    </div>
+	</div>
 </template>
 
 <script>
