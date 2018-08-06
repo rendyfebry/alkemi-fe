@@ -56,7 +56,10 @@ module.exports = {
 	router: {
 		middleware: ['auth'],
 	},
-	modules: ['@nuxtjs/proxy'],
+	modules: [
+		'@nuxtjs/dotenv',
+		'@nuxtjs/proxy',
+	],
 	proxy: {
 		'/api': {
 			target: 'http://localhost:5000',
