@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { googleClientId } from '~/config'
+const googleClientId = process.env.GOOGLE_CLIENT_ID || ''
 
 export default {
 	layout: 'login',
