@@ -1,4 +1,10 @@
+require('dotenv').config()
+
 module.exports = {
+	env: {
+		GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID || '',
+		BASE_URL: process.env.BASE_URL || '',
+	},
 	/*
 	** Headers of the page
 	*/
@@ -57,12 +63,11 @@ module.exports = {
 		middleware: ['auth'],
 	},
 	modules: [
-		'@nuxtjs/dotenv',
 		'@nuxtjs/proxy',
 	],
 	proxy: {
 		'/api': {
-			target: 'https://alkemi-be.herokuapp.com',
+			target: process.env.BASE_URL || '',
 			changeOrigin: true,
 			pathRewrite: {
 				'^/api': '',

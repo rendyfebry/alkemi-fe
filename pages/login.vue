@@ -61,8 +61,6 @@
 </template>
 
 <script>
-const googleClientId = process.env.GOOGLE_CLIENT_ID || ''
-
 export default {
 	layout: 'login',
 	data() {
@@ -139,7 +137,7 @@ export default {
 		},
 	},
 	mounted() {
-		console.log('googleClientId', googleClientId)
+		const googleClientId = process.env.GOOGLE_CLIENT_ID || ''
 
 		window.gapiOnLoadCallback = () => {
 			window.gapi.load('auth2', () => {
