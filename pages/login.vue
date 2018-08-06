@@ -139,6 +139,8 @@ export default {
 		},
 	},
 	mounted() {
+		console.log('googleClientId', googleClientId)
+
 		window.gapiOnLoadCallback = () => {
 			window.gapi.load('auth2', () => {
 				window.google_auth2 = window.gapi.auth2.init({
