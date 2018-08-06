@@ -62,7 +62,7 @@ module.exports = {
 	],
 	proxy: {
 		'/api': {
-			target: 'http://localhost:5000',
+			target: 'https://alkemi-be.herokuapp.com',
 			changeOrigin: true,
 			pathRewrite: {
 				'^/api': '',
