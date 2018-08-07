@@ -62,19 +62,4 @@ module.exports = {
 	router: {
 		middleware: ['auth'],
 	},
-	modules: [
-		'@nuxtjs/proxy',
-	],
-	proxy: {
-		'/api': {
-			target: process.env.BASE_URL || '',
-			changeOrigin: true,
-			pathRewrite: {
-				'^/api': '',
-			},
-			headers: {
-				'X-Api-Key': '22fbf8e3-d7ad-478f-92e5-a3f769eece00',
-			},
-		},
-	},
 }
