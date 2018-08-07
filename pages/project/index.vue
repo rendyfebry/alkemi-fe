@@ -2,7 +2,40 @@
 	<section class="container pt-4">
 		<div class="wrapper p-3">
 			<h2 class="mb-4">Projects</h2>
-			<div class="row">
+			<div class="row" v-if="isLoading">
+				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+					<div class="mb-3">
+						<div class="img-wrapper">
+							<img class="card-img-top" src="~/assets/placeholder-16-9.png" alt="Card image cap">
+						</div>
+						<div class="p-2">
+							<h5 class="card-title">Project 1</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+					<div class="mb-3">
+						<div class="img-wrapper">
+							<img class="card-img-top" src="~/assets/placeholder-16-9.png" alt="Card image cap">
+						</div>
+						<div class="p-2">
+							<h5 class="card-title">Project 1</h5>
+						</div>
+					</div>
+				</div>
+				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+					<div class="mb-3">
+						<div class="img-wrapper">
+							<img class="card-img-top" src="~/assets/placeholder-16-9.png" alt="Card image cap">
+						</div>
+						<div class="p-2">
+							<h5 class="card-title">Project 1</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row" v-else>
 				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
 					<div class="mb-3">
 						<div class="img-wrapper">
@@ -23,13 +56,20 @@
 
 <script>
 export default {
+	data() {
+		return {
+			isLoading: false,
+		}
+	},
 	computed: {
 		projects() {
 			return this.$store.state.project.projects || []
 		},
 	},
-	mounted() {
-		this.$store.dispatch('project/fetch')
+	async mounted() {
+		this.isLoading = true
+		await this.$store.dispatch('project/fetch')
+		this.isLoading = false
 	},
 }
 </script>
