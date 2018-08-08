@@ -222,6 +222,9 @@ export const DUMMY_PROJECT_TEMPLATE_1 = {
 }
 
 export const DUMMY_PROJECT_TEMPLATE = {
+	type: 'workspace',
+	class: 'workspace',
+	id: 'workspace',
 	children: [
 		{
 			type: 'container',
