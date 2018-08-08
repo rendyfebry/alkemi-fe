@@ -16,10 +16,6 @@ module.exports = {
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{ hid: 'description', name: 'description', content: 'Alkemi - Dead Simple Page Builder' },
 		],
-		script: [
-			{ src: '/jquery.min.js' },
-			{ src: '/jquery-ui.min.js' },
-		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{ rel: 'stylesheet', href: '/css/bootstrap.min.css' },
@@ -32,6 +28,7 @@ module.exports = {
 	*/
 	loading: { color: '#3B8070' },
 	plugins: [
+		{ src: '~/plugins/jquery', ssr: false },
 		'~/api/init.js',
 		'~/plugins/eventBus.js',
 		'~/plugins/bootstrap.js',
@@ -53,15 +50,6 @@ module.exports = {
 				})
 			}
 		},
-		vendor: ['jquery', 'jquery-ui'],
-		plugins: [
-			// set shortcuts as global for bootstrap
-			// new webpack.ProvidePlugin({
-			// 	$: 'jquery',
-			// 	jQuery: 'jquery',
-			// 	'window.jQuery': 'jquery'
-			// })
-		]
 	},
 	router: {
 		middleware: ['auth'],
