@@ -12,3 +12,4 @@ dist
 
 config.js
 .env
+.DS_STORE
