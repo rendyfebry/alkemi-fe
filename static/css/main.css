@@ -1,0 +1,201 @@
+/* latin-ext */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh7USSwaPGQ3q5d0N7w.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 300;
+	src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh7USSwiPGQ3q5d0.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjxAwXiWtFCfQ7A.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v14/S6uyw4BMUTPHjx4wXiWtFCc.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh6UVSwaPGQ3q5d0N7w.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh6UVSwiPGQ3q5d0.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 900;
+	src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh50XSwaPGQ3q5d0N7w.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'Lato';
+	font-style: normal;
+	font-weight: 900;
+	src: local('Lato Black'), local('Lato-Black'), url(https://fonts.gstatic.com/s/lato/v14/S6u9w4BMUTPHh50XSwiPGQ3q5d0.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	color: #4f545e;
+	background-color: #fafafa;
+}
+
+/* ------------ */
+
+.element-content--helper {
+  width: 125px !important;
+  height: 125px !important;
+}
+
+.drop-placeholder {
+	width: 100%;
+	background-color: rgba(0, 105, 255, 0.6);
+	background-image: repeating-linear-gradient(
+		135deg,
+		transparent,
+		transparent 12px,
+		rgba(0, 0, 0, 0.1) 0,
+		rgba(0, 0, 0, 0.1) 24px
+	);
+	border: 1px dashed #0069ff;
+	height: 2rem;
+}
+
+.builder-element {
+	border: 1px solid transparent;
+	/* padding: 0.2rem; */
+	position: relative;
+}
+
+.builder-element:hover {
+	border-color: #00e5ff;
+}
+
+.editor-element {
+	border: 2px solid transparent;
+}
+
+.editor-element-hovered {
+	border-color: #ffb417;
+}
+
+.element-body {
+	position: relative;
+}
+
+.element-content {
+}
+
+.element-action {
+	display: none;
+	top: 0;
+	left: 0;
+	background-color: #00e5ff;
+	position: absolute;
+	z-index: 999;
+}
+
+.builder-element:hover .element-action {
+  display: flex;
+}
+
+.element-action .item {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.element-action .item:hover {
+  background-color: #06d1e8;
+}
+
+.element-item:hover {
+  background-color: rgba(177, 186, 204, 0.8);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
+}
+
+.element-item {
+  background-color: rgba(177, 186, 204, 0.5);
+  border-radius: 0.2rem;
+  padding: 1rem;
+  cursor: grab;
+  cursor: -webkit-grab;
+  border: 0px dashed;
+}
+
+.element-icon {
+  font-size: 1.5rem;
+}
+
+.element-text {
+	font-size: 0.75rem;
+}
+
+.el-list,
+.sec-list {
+	background-color: #ffffff;
+	border-radius: 0.25rem;
+	height: 4.25rem;
+	min-width: 4.25rem !important;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.el-list.helper,
+.sec-list.helper {
+	width: 5rem !important;
+	height: 5rem !important;
+	opacity: 0.8;
+}
+
+.el-list > i,
+.sec-list > i {
+	font-size: 1.5rem;
+}
+
+.el-item:hover {
+	cursor: pointer;
+	background-color: #f0f0f0;
+}
+
+.dropzone {
+	min-height: 2rem !important;
+}

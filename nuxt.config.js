@@ -22,18 +22,15 @@ module.exports = {
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' },
+			{ rel: 'stylesheet', href: '/css/bootstrap.min.css' },
 			{ rel: 'stylesheet', href: '/css/all.css' },
-			{ rel: 'stylesheet', href: '/main.css' },
+			{ rel: 'stylesheet', href: '/css/main.css' },
 		],
 	},
 	/*
 	** Customize the progress bar color
 	*/
 	loading: { color: '#3B8070' },
-	css: [
-		'bootstrap/dist/css/bootstrap.css',
-	],
 	plugins: [
 		'~/api/init.js',
 		'~/plugins/eventBus.js',
@@ -56,7 +53,7 @@ module.exports = {
 				})
 			}
 		},
-		vendor: ['jquery', 'jquery-ui', 'bootstrap'],
+		vendor: ['jquery', 'jquery-ui'],
 		plugins: [
 			// set shortcuts as global for bootstrap
 			// new webpack.ProvidePlugin({
