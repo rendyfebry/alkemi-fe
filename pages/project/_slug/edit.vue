@@ -17,17 +17,36 @@
 
 			<h3 class="section-title">Sections</h3>
 			<div class="row no-gutters">
-				<div class="col col-12 col-lg-4" v-for="(item, index) in sectionOptions" :key="index">
+				<div class="col col-12 col-lg-4">
 					<div
 						class="sec-list mb-3 mr-3"
-						:data-type="item.type"
-						:data-icon="item.icon"
-						@click="addSection(item.type)"
+						data-type="section_1"
+						@click="addSection('section_1')"
 					>
 						<div class="item text-center">
-							<div class="icon">
-								{{ item.name }}
-							</div>
+							<img class="img-fluid" src="~/assets/section-1.png">
+						</div>
+					</div>
+				</div>
+				<div class="col col-12 col-lg-4">
+					<div
+						class="sec-list mb-3 mr-3"
+						data-type="section_2"
+						@click="addSection('section_2')"
+					>
+						<div class="item text-center">
+							<img class="img-fluid" src="~/assets/section-2.png">
+						</div>
+					</div>
+				</div>
+				<div class="col col-12 col-lg-4">
+					<div
+						class="sec-list mb-3 mr-3"
+						data-type="section_3"
+						@click="addSection('section_3')"
+					>
+						<div class="item text-center">
+							<img class="img-fluid" src="~/assets/section-3.png">
 						</div>
 					</div>
 				</div>
