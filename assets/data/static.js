@@ -1,8 +1,6 @@
 export const SECTION_OPTIONS = [
 	{
 		type: 'section_1',
-		name: '1',
-		icon: 'fas fa-paragraph',
 		template: {
 			type: 'container',
 			class: 'container',
@@ -16,7 +14,7 @@ export const SECTION_OPTIONS = [
 					children: [
 						{
 							type: 'col',
-							class: 'col dropzone ui-sortable',
+							class: 'col dropzone',
 							id: 'container_aaaa_1_a',
 							parentId: 'container_aaaa_1',
 							children: [],
@@ -28,8 +26,6 @@ export const SECTION_OPTIONS = [
 	},
 	{
 		type: 'section_2',
-		name: '2',
-		icon: 'fas fa-paragraph',
 		template: {
 			type: 'container',
 			class: 'container',
@@ -43,14 +39,14 @@ export const SECTION_OPTIONS = [
 					children: [
 						{
 							type: 'col',
-							class: 'col dropzone ui-sortable',
+							class: 'col dropzone',
 							id: 'container_bbbb_1_a',
 							parentId: 'container_bbbb_1',
 							children: [],
 						},
 						{
 							type: 'col',
-							class: 'col dropzone ui-sortable',
+							class: 'col dropzone',
 							id: 'container_bbbb_1_b',
 							parentId: 'container_bbbb_1',
 							children: [],
@@ -62,8 +58,6 @@ export const SECTION_OPTIONS = [
 	},
 	{
 		type: 'section_3',
-		name: '3',
-		icon: 'fas fa-paragraph',
 		template: {
 			type: 'container',
 			class: 'container',
@@ -77,21 +71,21 @@ export const SECTION_OPTIONS = [
 					children: [
 						{
 							type: 'col',
-							class: 'col dropzone ui-sortable',
+							class: 'col dropzone',
 							id: 'container_cccc_1_a',
 							parentId: 'container_cccc_1',
 							children: [],
 						},
 						{
 							type: 'col',
-							class: 'col dropzone ui-sortable',
+							class: 'col dropzone',
 							id: 'container_cccc_1_b',
 							parentId: 'container_cccc_1',
 							children: [],
 						},
 						{
 							type: 'col',
-							class: 'col dropzone ui-sortable',
+							class: 'col dropzone',
 							id: 'container_cccc_1_c',
 							parentId: 'container_cccc_1',
 							children: [],
@@ -103,8 +97,6 @@ export const SECTION_OPTIONS = [
 	},
 	{
 		type: 'section_3_1_2',
-		name: '3',
-		icon: 'fas fa-paragraph',
 		template: {
 			type: 'container',
 			class: 'container',
@@ -118,14 +110,14 @@ export const SECTION_OPTIONS = [
 					children: [
 						{
 							type: 'col',
-							class: 'col col-12 col-lg-4 dropzone ui-sortable',
+							class: 'col col-12 col-lg-4 dropzone',
 							id: 'container_dddd_1_a',
 							parentId: 'container_dddd_1',
 							children: [],
 						},
 						{
 							type: 'col',
-							class: 'col col-12 col-lg-8 dropzone ui-sortable',
+							class: 'col col-12 col-lg-8 dropzone',
 							id: 'container_dddd_1_b',
 							parentId: 'container_dddd_1',
 							children: [],
@@ -137,8 +129,6 @@ export const SECTION_OPTIONS = [
 	},
 	{
 		type: 'section_3_2_1',
-		name: '3',
-		icon: 'fas fa-paragraph',
 		template: {
 			type: 'container',
 			class: 'container',
@@ -152,14 +142,14 @@ export const SECTION_OPTIONS = [
 					children: [
 						{
 							type: 'col',
-							class: 'col col-12 col-lg-8 dropzone ui-sortable',
+							class: 'col col-12 col-lg-8 dropzone',
 							id: 'container_eeee_1_a',
 							parentId: 'container_eeee_1',
 							children: [],
 						},
 						{
 							type: 'col',
-							class: 'col col-12 col-lg-4 dropzone ui-sortable',
+							class: 'col col-12 col-lg-4 dropzone',
 							id: 'container_eeee_1_b',
 							parentId: 'container_eeee_1',
 							children: [],
