@@ -15,7 +15,25 @@
 				</nuxt-link>
 			</div>
 
-			<h3 class="section-title">Section 1</h3>
+			<h3 class="section-title">Sections</h3>
+			<div class="row no-gutters">
+				<div class="col col-12 col-lg-4" v-for="(item, index) in sectionOptions" :key="index">
+					<div
+						class="sec-list mb-3 mr-3"
+						:data-type="item.type"
+						:data-icon="item.icon"
+						@click="addSection(item.type)"
+					>
+						<div class="item text-center">
+							<div class="icon">
+								{{ item.name }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<h3 class="section-title">Elements</h3>
 			<div class="row no-gutters">
 				<div class="col col-12 col-lg-4" v-for="(item, index) in elementOptions" :key="index">
 					<div class="el-list mb-3 mr-3" :data-type="item.type" :data-icon="item.icon">
@@ -33,7 +51,7 @@
 
 <script>
 import Tree from '~/components/Tree'
-import { ELEMENT_OPTIONS } from '~/assets/data/static'
+import { SECTION_OPTIONS, ELEMENT_OPTIONS } from '~/assets/data/static'
 
 function findObject(o, key, id) {
 	//Early return
@@ -74,6 +92,7 @@ export default {
 	},
 	data() {
 		return {
+			sectionOptions: SECTION_OPTIONS,
 			elementOptions: ELEMENT_OPTIONS,
 		}
 	},
@@ -298,6 +317,35 @@ export default {
 					// remove editor element action
 					$('.element-action').removeClass('active')
 				})
+		},
+
+		addSection(type) {
+			const selectedSection = this.sectionOptions.find(i => i.type === type)
+
+			if (!selectedSection || !selectedSection.template) {
+				console.log('selectedSection is not found on section options')
+				return false
+			}
+
+			const treeCopy = JSON.parse(JSON.stringify(this.tree))
+
+			const newSection = JSON.parse(JSON.stringify(selectedSection.template))
+			newSection.icon = selectedSection.icon
+			newSection.type = newSection.type
+			// newSection.id = `section_${this.generateRandomString()}`
+
+			// newSection.children.forEach((row, i) => {
+			// 	row.parentId = `${newSection.id}_${i}`
+			// 	if (row.children && row.children.length) {
+			// 		row.children.forEach((col, j) => {
+			// 			col.parentId = `${newSection.id}_${i}_${j}`
+			// 		})
+			// 	}
+			// })
+
+			treeCopy.children.splice(0, 0, newSection)
+
+			this.$store.commit('project/setEditorTree', treeCopy)
 		},
 
 		jqueryIntegration() {

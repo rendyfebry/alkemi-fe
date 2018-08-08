@@ -1,3 +1,108 @@
+export const SECTION_OPTIONS = [
+	{
+		type: 'section_1',
+		name: '1',
+		icon: 'fas fa-paragraph',
+		template: {
+			type: 'container',
+			class: 'container',
+			id: 'container_aaaa',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'container_aaaa_1',
+					parentId: 'container_aaaa',
+					children: [
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'container_aaaa_1_a',
+							parentId: 'container_aaaa_1',
+							children: [],
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		type: 'section_2',
+		name: '2',
+		icon: 'fas fa-paragraph',
+		template: {
+			type: 'container',
+			class: 'container',
+			id: 'container_bbbb',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'container_bbbb_1',
+					parentId: 'container_bbbb',
+					children: [
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'container_bbbb_1_a',
+							parentId: 'container_bbbb_1',
+							children: [],
+						},
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'container_bbbb_1_b',
+							parentId: 'container_bbbb_1',
+							children: [],
+						},
+					]
+				}
+			]
+		}
+	},
+	{
+		type: 'section_3',
+		name: '3',
+		icon: 'fas fa-paragraph',
+		template: {
+			type: 'container',
+			class: 'container',
+			id: 'container_cccc',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'container_cccc_1',
+					parentId: 'container_cccc',
+					children: [
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'container_cccc_1_a',
+							parentId: 'container_cccc_1',
+							children: [],
+						},
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'container_cccc_1_b',
+							parentId: 'container_cccc_1',
+							children: [],
+						},
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'container_cccc_1_c',
+							parentId: 'container_cccc_1',
+							children: [],
+						},
+					]
+				}
+			]
+		}
+	},
+]
+
 export const ELEMENT_OPTIONS = [
 	{
 		type: 'paragraph',
@@ -46,13 +151,87 @@ export const DUMMY_PROJECT_TEMPLATE = {
 	children: [
 		{
 			type: 'container',
+			id: 'container_txkyg',
+			class: 'container',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'row_1',
+					parentId: 'container_txkyg',
+					children: [
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'col_1',
+							parentId: 'row_1',
+							children: [
+								{
+									type: 'heading',
+									class: '',
+									id: 'heading_nfquv',
+									parentId: 'col_1',
+									content: 'Title 1',
+									options: {
+										level: 4,
+									},
+								},
+							]
+						},
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'col_2',
+							parentId: 'row_1',
+							children: [
+								{
+									type: 'heading',
+									class: '',
+									id: 'heading_nfquw',
+									parentId: 'col_2',
+									content: 'Title 2',
+									options: {
+										level: 4,
+									},
+								},
+							]
+						},
+						{
+							type: 'col',
+							class: 'col dropzone ui-sortable',
+							id: 'col_3',
+							parentId: 'row_1',
+							children: [
+								{
+									type: 'heading',
+									class: '',
+									id: 'heading_nfqux',
+									parentId: 'col_3',
+									content: 'Title 3',
+									options: {
+										level: 4,
+									},
+								},
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
+
+export const DUMMY_PROJECT_TEMPLATE_2 = {
+	children: [
+		{
+			type: 'container',
 			class: 'jumbotron',
 			id: 'container_txkyg',
 			parentId: '',
 			children: [
 				{
 					type: 'section',
-					class: 'container dropzone',
+					class: 'container dropzone ui-sortable',
 					id: 'container_qyfok',
 					parentId: 'container_txkyg',
 					children: [
@@ -101,7 +280,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 									type: 'card-header',
 									id: 'card-header_one',
 									parentId: 'card_yggic',
-									class: 'card-header dropzone',
+									class: 'card-header dropzone ui-sortable',
 									children: [
 										{
 											type: 'heading',
@@ -118,7 +297,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 								},
 								{
 									type: 'card-body',
-									class: 'card-body dropzone',
+									class: 'card-body dropzone ui-sortable',
 									id: 'card-body_01',
 									parentId: 'card_yggic',
 									children: [
@@ -185,7 +364,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 									type: 'card-header',
 									id: 'card-header_two',
 									parentId: 'card_wpzeo',
-									class: 'card-header dropzone',
+									class: 'card-header dropzone ui-sortable',
 									children: [
 										{
 											type: 'heading',
@@ -201,7 +380,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 								},
 								{
 									type: 'card-body',
-									class: 'card-body dropzone',
+									class: 'card-body dropzone ui-sortable',
 									id: 'card-body_02',
 									parentId: 'card_wpzeo',
 									children: [
@@ -268,7 +447,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 									type: 'card-header',
 									id: 'card-header_three',
 									parentId: 'card_wpzep',
-									class: 'card-header dropzone',
+									class: 'card-header dropzone ui-sortable',
 									children: [
 										{
 											type: 'heading',
@@ -284,7 +463,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 								},
 								{
 									type: 'card-body',
-									class: 'card-body dropzone',
+									class: 'card-body dropzone ui-sortable',
 									id: 'card-body_03',
 									parentId: 'card_wpzep',
 									children: [

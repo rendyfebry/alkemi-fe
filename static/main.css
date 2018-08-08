@@ -102,7 +102,8 @@ body {
 	font-size: 0.75rem;
 }
 
-.el-list {
+.el-list,
+.sec-list {
 	background-color: #ffffff;
 	border-radius: 0.25rem;
 	height: 4.25rem;
@@ -113,13 +114,15 @@ body {
 	cursor: pointer;
 }
 
-.el-list.helper {
+.el-list.helper,
+.sec-list.helper {
 	width: 5rem !important;
 	height: 5rem !important;
 	opacity: 0.8;
 }
 
-.el-list > i {
+.el-list > i,
+.sec-list > i {
 	font-size: 1.5rem;
 }
 
@@ -129,5 +132,5 @@ body {
 }
 
 .dropzone {
-	min-height: 2rem;
+	min-height: 2rem !important;
 }
