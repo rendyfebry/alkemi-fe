@@ -147,7 +147,7 @@ export const ELEMENT_OPTIONS = [
 	},
 ]
 
-export const DUMMY_PROJECT_TEMPLATE = {
+export const DUMMY_PROJECT_TEMPLATE_1 = {
 	children: [
 		{
 			type: 'container',
@@ -221,7 +221,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 	]
 }
 
-export const DUMMY_PROJECT_TEMPLATE_2 = {
+export const DUMMY_PROJECT_TEMPLATE = {
 	children: [
 		{
 			type: 'container',
