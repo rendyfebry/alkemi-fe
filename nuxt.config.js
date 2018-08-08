@@ -23,8 +23,8 @@ module.exports = {
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Lato:300,400,700,900' },
+			{ rel: 'stylesheet', href: '/css/all.css' },
 			{ rel: 'stylesheet', href: '/main.css' },
-			{ rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v5.2.0/css/all.css' },
 		],
 	},
 	/*
