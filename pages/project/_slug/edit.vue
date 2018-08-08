@@ -1,7 +1,7 @@
 <template>
 	<div class="wrapper pt-4">
 		<div class="main">
-			<tree :tree-data="tree"></tree>
+			<tree :tree-data="tree" />
 		</div>
 
 		<div class="sidebar pl-5 pr-4">
@@ -18,33 +18,21 @@
 			<h3 class="section-title">Sections</h3>
 			<div class="row no-gutters">
 				<div class="col col-12 col-lg-4">
-					<div
-						class="sec-list mb-3 mr-3"
-						data-type="section_1"
-						@click="addSection('section_1')"
-					>
+					<div class="sec-list mb-3 mr-3" data-type="section_1">
 						<div class="item text-center">
 							<img class="img-fluid" src="~/assets/section-1.png">
 						</div>
 					</div>
 				</div>
 				<div class="col col-12 col-lg-4">
-					<div
-						class="sec-list mb-3 mr-3"
-						data-type="section_2"
-						@click="addSection('section_2')"
-					>
+					<div class="sec-list mb-3 mr-3" data-type="section_2">
 						<div class="item text-center">
 							<img class="img-fluid" src="~/assets/section-2.png">
 						</div>
 					</div>
 				</div>
 				<div class="col col-12 col-lg-4">
-					<div
-						class="sec-list mb-3 mr-3"
-						data-type="section_3"
-						@click="addSection('section_3')"
-					>
+					<div class="sec-list mb-3 mr-3" data-type="section_3">
 						<div class="item text-center">
 							<img class="img-fluid" src="~/assets/section-3.png">
 						</div>
@@ -111,6 +99,7 @@ export default {
 	},
 	data() {
 		return {
+			ready: false,
 			sectionOptions: SECTION_OPTIONS,
 			elementOptions: ELEMENT_OPTIONS,
 		}
@@ -294,6 +283,7 @@ export default {
 
 			$(elList).sortable(options)
 		},
+
 		initElementHover() {
 			$('body')
 				.on('mouseenter', '.editor-element', e => {
@@ -338,6 +328,104 @@ export default {
 				})
 		},
 
+		initDraggableSection() {
+			const options = {
+				cursor: 'move',
+				helper: 'clone',
+				revert: false,
+				connectToSortable: '.workspace',
+			}
+
+			$('body')
+				.find('.sec-list')
+				.draggable(options)
+		},
+
+		handleSortableStopSection(e, ui) {
+			const dropedItem = ui.item.get(0)
+			const dropedItemId = dropedItem ? dropedItem.id : ''
+
+			const previousSibling = ui.item.context.previousElementSibling
+			const previousSiblingId = previousSibling ? previousSibling.id : ''
+			// console.log('previousSiblingId', previousSiblingId)
+
+			const droppedItemParentId = dropedItem.parentElement ? dropedItem.parentElement.id : ''
+			// console.log('droppedItemParentId', droppedItemParentId)
+
+			if(!droppedItemParentId) {
+				console.log('droppedItemParentId is not found')
+				return false
+			}
+
+			// deep copy the tree data to cut reference
+			const treeCopy = JSON.parse(JSON.stringify(this.tree))
+			console.log('treeCopy', treeCopy)
+
+			const dataSet = dropedItem.dataset
+			const elementType = dropedItem.dataset ? dropedItem.dataset.type : ''
+			console.log('elementType', elementType)
+
+			const selectedElement = this.sectionOptions.find(i => i.type === elementType)
+
+			if (!selectedElement || !selectedElement.template) {
+				console.log('selectedElement is not found on element options')
+				return false
+			}
+
+			const newElement = JSON.parse(JSON.stringify(selectedElement.template))
+			newElement.icon = selectedElement.icon
+			newElement.type = selectedElement.type
+			newElement.id = `${elementType}_${this.generateRandomString()}`
+			// newElement.parentId = droppedItemParentId
+			console.log('newElement', newElement)
+
+
+			const position = findPosition(treeCopy.children, previousSiblingId)
+			treeCopy.children.splice(position, 0, newElement)
+
+			// Remove item from JQUERY UI
+			ui.item.remove()
+
+			// remove helper move
+			$('.element-content--helper').remove()
+
+			// console.log('treeCopy', treeCopy)
+
+			this.$store.commit('project/setEditorTree', treeCopy)
+		},
+
+		initSortableSection() {
+			const options = {
+				connectWith: '.workspace',
+				revert: false,
+				placeholder: 'drop-placeholder',
+				appendTo: '.workspace',
+				handle: '.handle',
+				scroll: false,
+				helper: (e, ui) => {
+					const elementType = ui.get(0).dataset.type
+					const elementIcon = ui.get(0).dataset.icon
+
+					const helperHTML = `<div class="el-list helper text-center">
+											<div class="item">
+												<div class="icon">
+													<i class="${elementIcon}"></i>
+												</div>
+												${elementType}
+											</div>
+										</div>`
+
+					return helperHTML
+				},
+				start: (e, ui) => this.handleSortableStart(),
+				stop: (e, ui) => this.handleSortableStopSection(e, ui),
+			}
+
+			const elList = $('.workspace')
+
+			$(elList).sortable(options)
+		},
+
 		addSection(type) {
 			const selectedSection = this.sectionOptions.find(i => i.type === type)
 
@@ -351,23 +439,19 @@ export default {
 			const newSection = JSON.parse(JSON.stringify(selectedSection.template))
 			newSection.icon = selectedSection.icon
 			newSection.type = newSection.type
-			// newSection.id = `section_${this.generateRandomString()}`
 
-			// newSection.children.forEach((row, i) => {
-			// 	row.parentId = `${newSection.id}_${i}`
-			// 	if (row.children && row.children.length) {
-			// 		row.children.forEach((col, j) => {
-			// 			col.parentId = `${newSection.id}_${i}_${j}`
-			// 		})
-			// 	}
-			// })
-
-			treeCopy.children.splice(0, 0, newSection)
+			treeCopy.children.push(newSection)
 
 			this.$store.commit('project/setEditorTree', treeCopy)
 		},
 
 		jqueryIntegration() {
+			// init draggable section
+			this.initDraggableSection()
+
+			// init sortable section
+			this.initSortableSection()
+
 			// init draggable
 			this.initDraggableElement()
 
@@ -385,6 +469,18 @@ export default {
 		deleteElement(id) {
 			console.log(`Element #${id} ask for delete`)
 		},
+	},
+	mounted() {
+		// Code that will run only after
+		// the entire view has been re-rendered
+		this.$nextTick(
+			function() {
+				// this handle all function that use jquery
+				this.jqueryIntegration()
+
+				// this.handleDrawElementFromListSection()
+			}.bind(this),
+		)
 	},
 	updated() {
 		// Code that will run only after
