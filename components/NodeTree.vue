@@ -251,4 +251,16 @@ export default {
 .card-deck .card {
 	min-width: 220px;
 }
+
+.workspace {
+	min-height: 2rem !important;
+}
+
+.dropzone {
+	min-height: 2rem !important;
+}
+
+.col {
+	border: 1px dashed #eeeeee;
+}
 </style>
