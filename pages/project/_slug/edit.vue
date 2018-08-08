@@ -113,15 +113,10 @@ export default {
 	},
 	data() {
 		return {
-			ready: false,
 			sectionOptions: SECTION_OPTIONS,
 			elementOptions: ELEMENT_OPTIONS,
+			tree: {},
 		}
-	},
-	computed: {
-		tree() {
-			return this.$store.state.project.editorTree || {}
-		},
 	},
 	methods: {
 		generateRandomString() {
@@ -248,9 +243,7 @@ export default {
 			// remove helper move
 			$('.element-content--helper').remove()
 
-			// console.log('treeCopy', treeCopy)
-
-			this.$store.commit('project/setEditorTree', treeCopy)
+			this.tree = treeCopy
 		},
 
 		initDraggableElement() {
@@ -405,7 +398,8 @@ export default {
 
 			// console.log('treeCopy', treeCopy)
 
-			this.$store.commit('project/setEditorTree', treeCopy)
+			// this.$store.commit('project/setEditorTree', treeCopy)
+			this.tree = treeCopy
 		},
 
 		initSortableSection() {
@@ -456,7 +450,8 @@ export default {
 
 			treeCopy.children.push(newSection)
 
-			this.$store.commit('project/setEditorTree', treeCopy)
+			// this.$store.commit('project/setEditorTree', treeCopy)
+			this.tree = treeCopy
 		},
 
 		jqueryIntegration() {
@@ -498,20 +493,12 @@ export default {
 
 			oldParent.children = remainingChild
 
-			this.$store.commit('project/setEditorTree', treeCopy)
+			// this.$store.commit('project/setEditorTree', treeCopy)
+			this.tree = treeCopy
 		},
 	},
 	mounted() {
-		// Code that will run only after
-		// the entire view has been re-rendered
-		this.$nextTick(
-			function() {
-				// this handle all function that use jquery
-				this.jqueryIntegration()
-
-				// this.handleDrawElementFromListSection()
-			}.bind(this),
-		)
+		this.tree = this.$store.state.project.editorTree
 	},
 	updated() {
 		// Code that will run only after
@@ -528,6 +515,7 @@ export default {
 	created() {
 		this.$bus.$on('edit-element', this.editElement)
 		this.$bus.$on('delete-element', this.deleteElement)
+
 	}
 }
 </script>
