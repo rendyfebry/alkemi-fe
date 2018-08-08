@@ -481,7 +481,24 @@ export default {
 		},
 
 		deleteElement(id) {
-			console.log(`Element #${id} ask for delete`)
+			const treeCopy = JSON.parse(JSON.stringify(this.tree))
+
+			const deletedElement = findObject(treeCopy, 'id', id)
+
+			if (!deletedElement || !deletedElement.parentId) {
+				console.log('deletedElement not found')
+				return false
+			}
+
+			const oldParent = findObject(treeCopy, 'id', deletedElement.parentId)
+
+			const remainingChild = oldParent.children.filter(
+				i => i.id !== deletedElement.id,
+			)
+
+			oldParent.children = remainingChild
+
+			this.$store.commit('project/setEditorTree', treeCopy)
 		},
 	},
 	mounted() {
