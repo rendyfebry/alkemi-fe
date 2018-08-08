@@ -186,13 +186,24 @@ body {
 	opacity: 0.8;
 }
 
-.el-list > i,
-.sec-list > i {
-	font-size: 1.5rem;
+.el-list i {
+	font-size: 1.1rem;
+	opacity: 0.5;
 }
 
-.el-item:hover {
+.sec-list img {
+	opacity: 0.4;
+}
+
+
+.el-list:hover,
+.sec-list:hover {
 	cursor: pointer;
-	background-color: #f0f0f0;
+	/* background-color: #f0f0f0; */
+}
+
+.el-list:hover i,
+.sec-list:hover img {
+	opacity: 1;
 }
 
