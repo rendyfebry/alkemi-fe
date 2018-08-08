@@ -147,7 +147,7 @@ export default {
 			const dropedItem = ui.item.get(0)
 			const dropedItemId = dropedItem ? dropedItem.id : ''
 
-			const previousSibling = ui.item.context.previousElementSibling
+			const previousSibling = dropedItem.previousElementSibling
 			const previousSiblingId = previousSibling ? previousSibling.id : ''
 			// console.log('previousSiblingId', previousSiblingId)
 
@@ -352,7 +352,7 @@ export default {
 			const dropedItem = ui.item.get(0)
 			const dropedItemId = dropedItem ? dropedItem.id : ''
 
-			const previousSibling = ui.item.context.previousElementSibling
+			const previousSibling = dropedItem.previousElementSibling
 			const previousSiblingId = previousSibling ? previousSibling.id : ''
 			// console.log('previousSiblingId', previousSiblingId)
 
