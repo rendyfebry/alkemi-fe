@@ -3,7 +3,7 @@
 		<div class="wrapper p-3">
 			<h2 class="mb-4">Projects</h2>
 			<div class="row" v-if="isLoading">
-				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+				<div class="col col-12 col-lg-4">
 					<div class="mb-3">
 						<div class="img-wrapper">
 							<img class="card-img-top" src="~/assets/placeholder-16-9.png" alt="Card image cap">
@@ -13,23 +13,23 @@
 						</div>
 					</div>
 				</div>
-				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+				<div class="col col-12 col-lg-4">
 					<div class="mb-3">
 						<div class="img-wrapper">
 							<img class="card-img-top" src="~/assets/placeholder-16-9.png" alt="Card image cap">
 						</div>
 						<div class="p-2">
-							<h5 class="card-title">Project 1</h5>
+							<h5 class="card-title">Project 2</h5>
 						</div>
 					</div>
 				</div>
-				<div class="col col-12 col-lg-4" v-for="project in projects" v-bind:key="project.id">
+				<div class="col col-12 col-lg-4">
 					<div class="mb-3">
 						<div class="img-wrapper">
 							<img class="card-img-top" src="~/assets/placeholder-16-9.png" alt="Card image cap">
 						</div>
 						<div class="p-2">
-							<h5 class="card-title">Project 1</h5>
+							<h5 class="card-title">Project 3</h5>
 						</div>
 					</div>
 				</div>
