@@ -101,6 +101,74 @@ export const SECTION_OPTIONS = [
 			]
 		}
 	},
+	{
+		type: 'section_3_1_2',
+		name: '3',
+		icon: 'fas fa-paragraph',
+		template: {
+			type: 'container',
+			class: 'container',
+			id: 'container_dddd',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'container_dddd_1',
+					parentId: 'container_dddd',
+					children: [
+						{
+							type: 'col',
+							class: 'col col-12 col-lg-4 dropzone ui-sortable',
+							id: 'container_dddd_1_a',
+							parentId: 'container_dddd_1',
+							children: [],
+						},
+						{
+							type: 'col',
+							class: 'col col-12 col-lg-8 dropzone ui-sortable',
+							id: 'container_dddd_1_b',
+							parentId: 'container_dddd_1',
+							children: [],
+						},
+					]
+				}
+			]
+		}
+	},
+	{
+		type: 'section_3_2_1',
+		name: '3',
+		icon: 'fas fa-paragraph',
+		template: {
+			type: 'container',
+			class: 'container',
+			id: 'container_eeee',
+			children: [
+				{
+					type: 'row',
+					class: 'row',
+					id: 'container_eeee_1',
+					parentId: 'container_eeee',
+					children: [
+						{
+							type: 'col',
+							class: 'col col-12 col-lg-8 dropzone ui-sortable',
+							id: 'container_eeee_1_a',
+							parentId: 'container_eeee_1',
+							children: [],
+						},
+						{
+							type: 'col',
+							class: 'col col-12 col-lg-4 dropzone ui-sortable',
+							id: 'container_eeee_1_b',
+							parentId: 'container_eeee_1',
+							children: [],
+						},
+					]
+				}
+			]
+		}
+	},
 ]
 
 export const ELEMENT_OPTIONS = [

@@ -38,6 +38,20 @@
 						</div>
 					</div>
 				</div>
+				<div class="col col-12 col-lg-4">
+					<div class="sec-list mb-3 mr-3" data-type="section_3_1_2">
+						<div class="item text-center">
+							<img class="img-fluid" src="~/assets/section-3_1-2.png">
+						</div>
+					</div>
+				</div>
+				<div class="col col-12 col-lg-4">
+					<div class="sec-list mb-3 mr-3" data-type="section_3_2_1">
+						<div class="item text-center">
+							<img class="img-fluid" src="~/assets/section-3_2-1.png">
+						</div>
+					</div>
+				</div>
 			</div>
 
 			<h3 class="section-title">Elements</h3>
