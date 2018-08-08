@@ -367,12 +367,15 @@ export default {
 			console.log(`Element #${id} ask for delete`)
 		},
 	},
-	mounted() {
+	updated() {
 		// Code that will run only after
 		// the entire view has been re-rendered
 		this.$nextTick(
 			function() {
+				// this handle all function that use jquery
 				this.jqueryIntegration()
+
+				// this.handleDrawElementFromListSection()
 			}.bind(this),
 		)
 	},
