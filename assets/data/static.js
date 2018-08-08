@@ -27,7 +27,7 @@ export const ELEMENT_OPTIONS = [
 		template: {
 			id: '',
 			options: {
-				src: 'https://app.managix.id/static/img/image-placeholder.jpg',
+				src: 'https://s3-ap-southeast-1.amazonaws.com/alkemi-static/image-placeholder.jpg',
 			},
 		},
 	},
