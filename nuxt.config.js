@@ -20,6 +20,9 @@ module.exports = {
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
 			{ rel: 'stylesheet', href: '/css/bootstrap.min.css' },
 			{ rel: 'stylesheet', href: '/css/all.css' },
+			{ rel: 'stylesheet', href:'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' },
+			{ rel: 'stylesheet', href:'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_editor.pkgd.min.css' },
+			{ rel: 'stylesheet', href:'https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.5.1/css/froala_style.min.css' },
 			{ rel: 'stylesheet', href: '/css/main.css' },
 		],
 	},
@@ -29,9 +32,10 @@ module.exports = {
 	loading: { color: '#3B8070' },
 	plugins: [
 		{ src: '~/plugins/jquery', ssr: false },
-		'~/api/init.js',
+		{ src: '~/plugins/froala', ssr: false },
 		'~/plugins/eventBus.js',
 		'~/plugins/bootstrap.js',
+		'~/api/init.js',
 	],
 	/*
 	** Build configuration

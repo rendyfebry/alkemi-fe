@@ -9,6 +9,7 @@
 				<h2 class="subtitle">
 					Nuxt.js project
 				</h2>
+				<div class="editable" />
 			</div>
 		 </div>
 	</section>
@@ -18,9 +19,42 @@
 import AppLogo from '~/components/AppLogo.vue'
 
 export default {
+	data () {
+		return {
+			config: {
+				events: {
+					'froalaEditor.initialized': function () {
+						console.log('initialized')
+					}
+				}
+			},
+			model: 'Edit Your Content Here!'
+		}
+	},
 	components: {
 		AppLogo,
 	},
+	mounted() {
+		$(function() {
+			$('.editable').froalaEditor({
+				toolbarInline: true,
+				charCounterCount: false,
+				toolbarButtons: [
+					'bold',
+					'italic',
+					'underline',
+					'strikeThrough',
+					'color',
+					'-',
+					'insertLink',
+					'paragraphFormat',
+					'align',
+					'formatOL',
+					'formatUL',
+				],
+			})
+		})
+	}
 }
 </script>
 
