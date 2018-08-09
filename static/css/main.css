@@ -192,6 +192,7 @@ body {
 }
 
 .sec-list img {
+	max-width: 70px;
 	opacity: 0.4;
 }
 
