@@ -285,10 +285,101 @@ export const DUMMY_PROJECT_TEMPLATE = {
 	id: 'workspace',
 	children: [
 		{
+			type: 'nav',
+			class: 'navbar navbar-expand-lg navbar-dark bg-dark',
+			id: 'navbar-1',
+			parentId: 'workspace',
+			children: [
+				{
+					type: 'link',
+					class: 'navbar-brand',
+					id: 'navbar-brand',
+					parentId: 'navbar-1',
+					href: '#',
+					content: 'Navbar',
+				},
+				{
+					type: 'button',
+					class: 'navbar-toggler',
+					id: 'navbar-toggler',
+					children: [
+						{
+							type: 'span',
+							class: 'navbar-toggler-icon',
+						},
+					],
+				},
+				{
+					type: 'container',
+					class: 'collapse navbar-collapse',
+					id: 'navbarSupportedContent',
+					parentId: 'navbar-1',
+					children: [
+						{
+							type: 'ul',
+							class: 'navbar-nav ml-auto',
+							id: 'navbar-nav-1',
+							parentId: 'navbarSupportedContent',
+							children: [
+								{
+									type: 'li',
+									class: 'nav-item active',
+									id: 'nav-item-1',
+									parentId: 'navbar-nav-1',
+									children: [
+										{
+											type: 'link',
+											class: 'nav-link',
+											id: 'nav-link-1',
+											parentId: 'nav-item-1',
+											href: '#',
+											content: 'Home',
+										},
+									],
+								},
+								{
+									type: 'li',
+									class: 'nav-item',
+									id: 'nav-item-2',
+									parentId: 'navbar-nav-1',
+									children: [
+										{
+											type: 'link',
+											class: 'nav-link',
+											id: 'nav-link-2',
+											parentId: 'nav-item-2',
+											href: '#',
+											content: 'About',
+										},
+									],
+								},
+								{
+									type: 'li',
+									class: 'nav-item',
+									id: 'nav-item-3',
+									parentId: 'navbar-nav-1',
+									children: [
+										{
+											type: 'link',
+											class: 'nav-link',
+											id: 'nav-link-3',
+											parentId: 'nav-item-3',
+											href: '#',
+											content: 'Contact',
+										},
+									],
+								},
+							],
+						},
+					],
+				},
+			],
+		},
+		{
 			type: 'container',
 			class: 'jumbotron',
 			id: 'container_txkyg',
-			parentId: '',
+			parentId: 'workspace',
 			children: [
 				{
 					type: 'section',
@@ -323,7 +414,7 @@ export const DUMMY_PROJECT_TEMPLATE = {
 			type: 'container',
 			class: 'container container-small',
 			id: 'container_gwcjb',
-			parentId: '',
+			parentId: 'workspace',
 			children: [
 				{
 					type: 'card-deck',
