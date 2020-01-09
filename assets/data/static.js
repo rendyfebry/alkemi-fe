@@ -417,6 +417,21 @@ export const DUMMY_PROJECT_TEMPLATE = {
 			parentId: 'workspace',
 			children: [
 				{
+					type: 'section',
+					class: 'container dropzone ui-sortable',
+					id: 'container_gwcjb_1',
+					parentId: 'container_txkyg',
+					children: []
+				}
+			],
+		},
+		{
+			type: 'container',
+			class: 'container container-small',
+			id: 'container_gwcjb',
+			parentId: 'workspace',
+			children: [
+				{
 					type: 'card-deck',
 					class: 'card-deck mb-3 text-center',
 					id: 'card-deck_zevpy',
